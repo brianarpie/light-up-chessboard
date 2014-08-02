@@ -12,6 +12,9 @@ by Brian David Arpie
       - rook.js
       - pawn_w.js
       - pawn_b.js
+    - stylesheets
+      - chessboard.css
+      - game_window.css
     - images
       - king.png
       - queen.png

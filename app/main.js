@@ -1,26 +1,23 @@
 var Chessboard = require('./controllers/chessboard_ctrl.js');
-var Knight = require('./assets/pieces/knight.js');
-var Queen = require('./assets/pieces/queen.js');
-var Rook = require('./assets/pieces/rook.js');
-var Bishop = require('./assets/pieces/bishop.js');
-var King = require('./assets/pieces/king.js');
-var WhitePawn = require('./assets/pieces/pawn_w.js');
-var BlackPawn = require('./assets/pieces/pawn_b.js');
+var starting_position = require('./assets/positions/starting_position.js');
 
 var board = new Chessboard.init();
 
-function add_black_piece(piece) {
-  var arr = piece.legal_moves();
-  for (var i = 0, len = arr.length; i < len; i++) {
-    board.add_black_counter(arr[i][0], arr[i][1]);
-  }
+var white_pieces = starting_position.white_pieces;
+var black_pieces = starting_position.black_pieces;
+
+
+console.log(white_pieces[0].legal_moves());
+var i, len;
+for (i = 0, len = white_pieces.length; i < len; i++) {
+  board.add_white_piece(white_pieces[i]);
 }
-function add_white_piece(piece) {
-  var arr = piece.legal_moves();
-  for (var i = 0, len = arr.length; i < len; i++) {
-    board.add_white_counter(arr[i][0], arr[i][1]);
-  }
+
+var i, len;
+for (i = 0, len = black_pieces.length; i < len; i++) {
+  board.add_black_piece(black_pieces[i]);
 }
+
 
 // var K = new Knight.init(1, 0);
 // var R = new Rook.init(0, 0);

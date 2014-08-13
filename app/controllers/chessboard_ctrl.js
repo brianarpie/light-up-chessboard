@@ -71,17 +71,6 @@
     }
   }
 
-  // Chessboard.prototype.print_black_counters = function() {
-  //   var x, y, max, buf = [];
-  //   for (y = 0, max = 8; y < max; y++) {
-  //     for (x = 0; x < max; x++) {
-  //       buf.push(this.squares[x][y].black_counters);
-  //     }
-  //     console.log(buf);
-  //     buf = [];
-  //   }
-  // }
-
   Chessboard.prototype.print = function() {
     var x, y, max, diff, buf = [], color = {};
     for (y = 0, max = 8; y < max; y++) {

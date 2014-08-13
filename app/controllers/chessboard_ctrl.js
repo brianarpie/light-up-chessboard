@@ -15,7 +15,6 @@
     }
   }
 
-<<<<<<< HEAD
   Chessboard.prototype.color_chart = function(heat_level) {
     switch(heat_level) {
       case -5:
@@ -45,8 +44,6 @@
     }
   }
 
-=======
->>>>>>> master
   Chessboard.prototype.add_white_counter = function(x, y) {
     this.squares[x][y].white_counters++;
   };
@@ -74,38 +71,28 @@
     }
   }
 
-  Chessboard.prototype.print_black_counters = function() {
-    var x, y, max, buf = [];
-    for (y = 0, max = 8; y < max; y++) {
-      for (x = 0; x < max; x++) {
-        buf.push(this.squares[x][y].black_counters);
-      }
-      console.log(buf);
-      buf = [];
-    }
-  }
+  // Chessboard.prototype.print_black_counters = function() {
+  //   var x, y, max, buf = [];
+  //   for (y = 0, max = 8; y < max; y++) {
+  //     for (x = 0; x < max; x++) {
+  //       buf.push(this.squares[x][y].black_counters);
+  //     }
+  //     console.log(buf);
+  //     buf = [];
+  //   }
+  // }
 
   Chessboard.prototype.print = function() {
-<<<<<<< HEAD
     var x, y, max, diff, buf = [], color = {};
     for (y = 0, max = 8; y < max; y++) {
       for (x = 0; x < max; x++) {
         diff = (this.squares[x][y].white_counters - this.squares[x][y].black_counters);
         color = this.color_chart(diff);
         set_background(x, y, color);
-=======
-    var x, y, max, diff, buf = [];
-    for (y = 0, max = 8; y < max; y++) {
-      for (x = 0; x < max; x++) {
-        diff = (this.squares[x][y].white_counters - this.squares[x][y].black_counters);
->>>>>>> master
         if (diff >= 0) {
-          // console
           diff = "+" + diff;
-          // console.log('['+diff+']');
         }
           buf.push('['+diff+']');
-        // buf.push(diff);
       }
       console.log('\n');
       console.log(buf);
@@ -136,7 +123,6 @@
     }
   }
 
-<<<<<<< HEAD
   function set_background(x, y, color) {
     var square = document.getElementById(x.concat(y));
     square.setAttribute('style', 'background:rgb('+color.r+','+color.g+','+color.b+');');
@@ -145,8 +131,3 @@
   exports.init = Chessboard;
 
 })();
-=======
-  exports.init = Chessboard;
-
-})();
->>>>>>> master

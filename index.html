@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<title>La Luz de Ajederez</title>
+<meta description="la luz de ajedrez">
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="app/assets/stylesheets/styles.css">
+<link rel="stylesheet" href="app/assets/stylesheets/chessboard.css">
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="app/app.js"></script>
+<!-- i don't think i need to add jquery to dependencies -->
+</head>
+<body ng-app="LaLuzDeAjedrez">
+  <div ng-controller="ChessboardController">
+    <div ng-controller="PiecesController">
+      <div ng-controller="GameController">
+      <button ng-click="newGame(); print()">Setup Starting Chess Position (only press once)</button>
+        <!-- use ng-repeat later to make this better -->
+        <table>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,0)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,0)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,0)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,0)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,0)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,0)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,0)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,0)}"></td>
+          </tr>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,1)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,1)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,1)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,1)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,1)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,1)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,1)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,1)}"></td>
+          </tr>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,2)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,2)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,2)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,2)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,2)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,2)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,2)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,2)}"></td>
+          </tr>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,3)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,3)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,3)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,3)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,3)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,3)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,3)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,3)}"></td>
+          </tr>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,4)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,4)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,4)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,4)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,4)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,4)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,4)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,4)}"></td>
+          </tr>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,5)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,5)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,5)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,5)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,5)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,5)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,5)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,5)}"></td>
+          </tr>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,6)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,6)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,6)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,6)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,6)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,6)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,6)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,6)}"></td>
+          </tr>
+          <tr>
+            <td ng-style="{'background': getBackgroundColor(0,7)}"></td>
+            <td ng-style="{'background': getBackgroundColor(1,7)}"></td>
+            <td ng-style="{'background': getBackgroundColor(2,7)}"></td>
+            <td ng-style="{'background': getBackgroundColor(3,7)}"></td>
+            <td ng-style="{'background': getBackgroundColor(4,7)}"></td>
+            <td ng-style="{'background': getBackgroundColor(5,7)}"></td>
+            <td ng-style="{'background': getBackgroundColor(6,7)}"></td>
+            <td ng-style="{'background': getBackgroundColor(7,7)}"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+<script src="app/controllers/chessboardCtrl.js"></script>
+<script src="app/controllers/piecesCtrl.js"></script>
+<script src="app/controllers/gameCtrl.js"></script>
+</body>
+</html>

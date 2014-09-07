@@ -3,6 +3,7 @@ app.controller('GameController', ['$rootScope', '$scope',
   function($rootScope, $scope) {
 
     
+    // $scope.addPiece('rook', 'white', 0, 0);
 
     $scope.newGame = function() {
 

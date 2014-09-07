@@ -1,1 +1,1 @@
-angular.module('LaLuzDeAjedrez', ['ngRoute']);
+angular.module('LaLuzDeAjedrez', ['ngRoute', 'ngDraggable']);

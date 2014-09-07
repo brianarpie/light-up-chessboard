@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="app/assets/stylesheets/chessboard.css">
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/ng-draggable/ngDraggable.js"></script>
 <script src="app/app.js"></script>
 <!-- i don't think i need to add jquery to dependencies -->
 </head>
@@ -15,12 +17,22 @@
   <div ng-controller="ChessboardController">
     <div ng-controller="PiecesController">
       <div ng-controller="GameController">
-      <button ng-click="newGame(); print()">Setup Starting Chess Position (only press once)</button>
+      <button ng-click="newGame()">Setup Starting Chess Position (only press once)</button>
+      <button ng-click="famousGame()">Fischer vs. Benko 1961 White To Move</button>
         <table>
           <tbody>
             <tr ng-repeat="row in squares">
-              <td ng-style="{'background': getBackgroundColor($index, $parent.$index)}" ng-repeat="square in row">
-                <img ng-src="{{getImage($index, $parent.$index)}}">
+
+              <td ng-drop="true" 
+                  ng-drop-success="onDropComplete($data, $event)" 
+                  ng-style="{'background': getBackgroundColor($index, $parent.$index)}" 
+                  ng-repeat="square in row">
+
+                <div ng-drag="true" 
+                     ng-drag-data="squares[$index][$parent.$index].piece" 
+                     ng-drag-success="precompute($data, $event)">
+                <img ng-src="{{getImage($index, $parent.$index)}}"></div>
+
               </td>
             </tr>
           </tbody>

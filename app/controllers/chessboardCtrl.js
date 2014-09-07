@@ -23,15 +23,41 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     // on the things that directly influence/touch the chessbaord itself.
 
     function drag(ev) {
-      debugger;
-      // ev.dataTransfer.setData("text/html", ev.target.);
+      // debugger;
+      ev.dataTransfer.setData("text/html", ev.target.id);
     }    
+
+    function precompute(ev) {
+       ev.preventDefault();
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("imgUrl");
+      ev.target.appendChild(document.getElementById(data));
+
+    }
+
+    // $scope.dragData;
+
+    // data is the clone of the piece object for a given square
+    $scope.onDropComplete = function(event, data) {
+      // if we cant get a state of the object before its dropped then this wont work...
+      debugger;
+
+    }
+
+    $scope.precompute = function(event, data) {
+      // get all legal moves!
+      $scope.dragData = data;
+
+    }
 
     $scope.getBackgroundColor = function(x, y) {
       var color, totalCounters;
       totalCounters = $scope.squares[x][y].white_counters - $scope.squares[x][y].black_counters
-      color = $scope.color_chart(totalCounters);
-      return 'rgb('+color.r+','+color.g+','+color.b+')';
+      color = $scope.opacity_chart(totalCounters);
+      return 'rgba('+color.r+','+color.g+','+color.b+','+color.a+')';
     }
 
     $scope.getImage = function(x, y) {
@@ -53,22 +79,55 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       }
     }
 
+    $scope.opacity_chart = function(heatLevel) {
+      switch(heatLevel) {
+        case -6:
+          return {r: 255, g: 0, b: 0, a: 1};
+        case -5:
+          return {r: 255, g: 0, b: 0, a: 0.5};
+        case -4:
+          return {r: 255, g: 0, b: 0, a: 0.4};
+        case -3:
+          return {r: 255, g: 0, b: 0, a: 0.3};
+        case -2:
+          return {r: 255, g: 0, b: 0, a: 0.2};
+        case -1:
+          return {r: 255, g: 0, b: 0, a: 0.1};
+        case 0:
+          return {r: 0, g: 0, b: 0, a: 0};
+        case 1:
+          return {r: 0, g: 0, b: 255, a: 0.1};
+        case 2:
+          return {r: 0, g: 0, b: 255, a: 0.2};
+        case 3:
+          return {r: 0, g: 0, b: 255, a: 0.3};
+        case 4:
+          return {r: 0, g: 0, b: 255, a: 0.4};
+        case 5:
+          return {r: 0, g: 0, b: 255, a: 0.5};
+        case 6:
+          return {r: 0, g: 0, b: 255, a: 0.6};
+        default:
+          return {r: 255, g: 255, b: 255};
+      }
+    }
+
     $scope.color_chart = function(heat_level) {
       switch(heat_level) {
         case -6:
-          return {r: 175, g: 0, b: 0};
-        case -5:
-          return {r: 165, g: 0, b: 0};
-        case -4:
           return {r: 155, g: 0, b: 0};
-        case -3:
+        case -5:
           return {r: 145, g: 0, b: 0};
-        case -2:
+        case -4:
           return {r: 135, g: 0, b: 0};
-        case -1:
+        case -3:
           return {r: 125, g: 0, b: 0};
+        case -2:
+          return {r: 115, g: 0, b: 0};
+        case -1:
+          return {r: 105, g: 0, b: 0};
         case 0:
-          return {r: 255, g: 255, b: 255};
+          return {r: 0, g: 255, b: 0};
         case 1:
           return {r: 0, g: 0, b: 125};
         case 2:

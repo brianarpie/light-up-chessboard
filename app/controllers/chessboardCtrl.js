@@ -45,7 +45,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     // data is the clone of the piece object for a given square
     $scope.onDropComplete = function(event, data, x, y) {
 
-      if (event.isPawn || searchArray(event.legalMoves(), [x,y])) {
+      // if (event.isPawn || searchArray(event.legalMoves(), [x,y])) {
         // $scope.squares[x][y].addPiece(event);
 
       if ($scope.squares[$scope.current_x][$scope.current_y].piece.color) {
@@ -68,7 +68,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
           $scope.addBlackPiece(event, x, y);
         }
 
-      }
+      // }
 // debugger;
     }
 

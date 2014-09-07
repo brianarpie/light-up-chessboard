@@ -21,7 +21,12 @@ app.controller('PiecesController', ['$rootScope', '$scope',
           }
         }
         return squares;
+      },
+      imgUrl: function(color) {
+        return color === 'white' ? 'app/assets/images/pieces_60px/white-king.png'
+                                 : 'app/assets/images/pieces_60px/black-king.png';
       }
+
     };
 
     $rootScope.queen = {
@@ -37,6 +42,10 @@ app.controller('PiecesController', ['$rootScope', '$scope',
           }
         }
         return squares;
+      },
+      imgUrl: function(color) {
+        return color === 'white' ? 'app/assets/images/pieces_60px/white-queen.png'
+                                 : 'app/assets/images/pieces_60px/black-queen.png';
       }
     };
 
@@ -52,6 +61,10 @@ app.controller('PiecesController', ['$rootScope', '$scope',
           }
         }
         return squares;
+      },
+      imgUrl: function(color) {
+        return color === 'white' ? 'app/assets/images/pieces_60px/white-rook.png'
+                                 : 'app/assets/images/pieces_60px/black-rook.png';
       }
     }
 
@@ -68,6 +81,10 @@ app.controller('PiecesController', ['$rootScope', '$scope',
           }
         }
         return squares;
+      },
+      imgUrl: function(color) {
+        return color === 'white' ? 'app/assets/images/pieces_60px/white-bishop.png'
+                                 : 'app/assets/images/pieces_60px/black-bishop.png';
       }
     };
 
@@ -82,6 +99,10 @@ app.controller('PiecesController', ['$rootScope', '$scope',
           }
         }
         return moves;
+      },
+      imgUrl: function(color) {
+        return color === 'white' ? 'app/assets/images/pieces_60px/white-knight.png'
+                                 : 'app/assets/images/pieces_60px/black-knight.png';
       }
     }
 
@@ -99,6 +120,9 @@ app.controller('PiecesController', ['$rootScope', '$scope',
         }
 
         return squares;
+      },
+      imgUrl: function(color) {
+        return 'app/assets/images/pieces_60px/white-pawn.png';
       }
     };
 
@@ -116,6 +140,9 @@ app.controller('PiecesController', ['$rootScope', '$scope',
         }
 
         return squares;
+      },
+      imgUrl: function(color) {
+        return 'app/assets/images/pieces_60px/black-pawn.png';
       }
     }
 

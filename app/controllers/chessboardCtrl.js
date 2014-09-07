@@ -18,11 +18,29 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       }
     }
 
+    // for now i can put these methods here and then later on re-organize them
+    // we dont want everything going in the chessboard controller
+    // on the things that directly influence/touch the chessbaord itself.
+
+    function drag(ev) {
+      debugger;
+      // ev.dataTransfer.setData("text/html", ev.target.);
+    }    
+
     $scope.getBackgroundColor = function(x, y) {
       var color, totalCounters;
       totalCounters = $scope.squares[x][y].white_counters - $scope.squares[x][y].black_counters
       color = $scope.color_chart(totalCounters);
       return 'rgb('+color.r+','+color.g+','+color.b+')';
+    }
+
+    $scope.getImage = function(x, y) {
+      // if ($scope.squares[x][y].piece) debugger;
+      return $scope.squares[x][y].piece ? $scope.squares[x][y].piece.imgUrl($scope.squares[x][y].piece.color) : '';
+    }
+
+    $scope.getLegalMoves = function(x, y) {
+      return $scope.squares[x][y].piece.legalMoves(x, y);
     }
 
     $scope.addPiece = function(name, color, x, y) {
@@ -37,6 +55,8 @@ app.controller('ChessboardController', ['$rootScope','$scope',
 
     $scope.color_chart = function(heat_level) {
       switch(heat_level) {
+        case -6:
+          return {r: 175, g: 0, b: 0};
         case -5:
           return {r: 165, g: 0, b: 0};
         case -4:
@@ -59,6 +79,8 @@ app.controller('ChessboardController', ['$rootScope','$scope',
           return {r: 0, g: 0, b: 155};
         case 5:
           return {r: 0, g: 0, b: 165};
+        case 6:
+          return {r: 0, g: 0, b: 175};
         default:
           return {r: 255, g: 255, b: 255};
       }
@@ -137,7 +159,9 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       }
     }
 
+    // poorly named. for now we will overload it
     $scope.addWhitePiece = function(piece, x, y) {
+
       var arr = piece.legalMoves(x, y);
       for (var i = 0, len = arr.length; i < len; i++) {
         $scope.addWhiteCounter(arr[i][0], arr[i][1]);
@@ -150,20 +174,19 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     // ordered by most frequent piece
       switch(name) {
         case 'whitePawn': 
-          return $rootScope.whitePawn;
+          return angular.copy($rootScope.whitePawn);
         case 'blackPawn':
-          return $rootScope.blackPawn;
+          return angular.copy($rootScope.blackPawn);
         case 'knight':
-          return $rootScope.knight;
+          return angular.copy($rootScope.knight);
         case 'bishop':
-          return $rootScope.bishop;
+          return angular.copy($rootScope.bishop);
         case 'rook':
-          return $rootScope.rook;
+          return angular.copy($rootScope.rook);
         case 'queen':
-          return $rootScope.queen;
+          return angular.copy($rootScope.queen);
         case 'king':
-          return $rootScope.king;
-
+          return angular.copy($rootScope.king);
       }
     }
 

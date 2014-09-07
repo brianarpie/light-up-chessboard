@@ -29,7 +29,8 @@ app.controller('PiecesController', ['$rootScope', '$scope',
       imgUrl: function(color) {
         return color === 'white' ? 'app/assets/images/pieces_60px/white-king.png'
                                  : 'app/assets/images/pieces_60px/black-king.png';
-      }
+      },
+      isPawn: true
 
     };
 

@@ -25,15 +25,18 @@
 
               <td ng-drop="true" 
                   ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)" 
-                  ng-style="{'background': getBackgroundColor($index, $parent.$index)}" 
+                  ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
                   ng-repeat="square in row"
-                  >
+                  ng-model="squareColor"
 
+                  >
+                  
                 <img id="{{$index.toString().concat($parent.$index)}}"
                      ng-drag="true" 
                      ng-drag-data="squares[$index][$parent.$index].piece"
                      ng-drag-success="precompute($data, $event)"
                      ng-src="{{getImage($index, $parent.$index)}}"
+
                      >
 
               </td>

@@ -143,31 +143,31 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     $scope.opacity_chart = function(heatLevel) {
       switch(heatLevel) {
         case -6:
-          return {r: 255, g: 0, b: 0, a: 1};
+          return {r: 255, g: 0, b: 0, a: 0.7};
         case -5:
-          return {r: 255, g: 0, b: 0, a: 0.5};
+          return {r: 255, g: 0, b: 0, a: 0.6};
         case -4:
-          return {r: 255, g: 0, b: 0, a: 0.4};
+          return {r: 255, g: 0, b: 0, a: 0.5};
         case -3:
-          return {r: 255, g: 0, b: 0, a: 0.3};
+          return {r: 255, g: 0, b: 0, a: 0.4};
         case -2:
-          return {r: 255, g: 0, b: 0, a: 0.2};
+          return {r: 255, g: 0, b: 0, a: 0.3};
         case -1:
-          return {r: 255, g: 0, b: 0, a: 0.1};
+          return {r: 255, g: 0, b: 0, a: 0.2};
         case 0:
-          return {r: 255, g: 0, b: 255, a: 0.15};
+          return {r: 255, g: 0, b: 255, a: 0.25};
         case 1:
-          return {r: 0, g: 0, b: 255, a: 0.1};
-        case 2:
           return {r: 0, g: 0, b: 255, a: 0.2};
-        case 3:
+        case 2:
           return {r: 0, g: 0, b: 255, a: 0.3};
-        case 4:
+        case 3:
           return {r: 0, g: 0, b: 255, a: 0.4};
-        case 5:
+        case 4:
           return {r: 0, g: 0, b: 255, a: 0.5};
-        case 6:
+        case 5:
           return {r: 0, g: 0, b: 255, a: 0.6};
+        case 6:
+          return {r: 0, g: 0, b: 255, a: 0.7};
         default:
           return {r: 255, g: 255, b: 255, a:0};
       }

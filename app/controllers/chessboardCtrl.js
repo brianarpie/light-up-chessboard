@@ -65,6 +65,14 @@ app.controller('ChessboardController', ['$rootScope','$scope',
 
     $scope.onDropComplete = function(event, data, x, y) {
       var piece = event;
+
+      if (!$.isEmptyObject($scope.board[x][y].piece)) {
+        if ($scope.board[x][y].piece.color == 'white') {
+          $scope.removeWhitePiece($scope.board[x][y].piece);
+        } else {
+          $scope.removeBlackPiece($scope.board[x][y].piece);
+        }
+      }
       
       $scope.board[x][y].piece = piece;
 

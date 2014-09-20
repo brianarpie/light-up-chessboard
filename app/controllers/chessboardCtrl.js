@@ -5,7 +5,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
 
     // TODO: check scopes of the functions. some may not need to be scoped;
 
-    function init() {
+    $scope.init = function() {
       $scope.board = new Array(8);
       for(var i = 0, len = 8; i < len; i++) {
         $scope.board[i] = new Array(8);
@@ -237,6 +237,6 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       }
     }
 
-    init();
+    $scope.init();
 
   }]);

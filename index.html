@@ -17,9 +17,8 @@
   <div ng-controller="ChessboardController">
     <div ng-controller="PiecesController">
       <div ng-controller="GameController">
-      <button ng-click="init(); newGame()">Setup Starting Chess Position (only press once)</button>
+      <button ng-click="init(); newGame()">Starting Chess Position</button>
       <button ng-click="init(); famousGame()">Fischer vs. Benko 1961 White To Move</button>
-      <button ng-click="init(); newPieceControllerTest()">Test New Piece Controller</button>
         <table>
           <tbody>
             <tr ng-repeat="row in board">

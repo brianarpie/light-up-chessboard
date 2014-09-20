@@ -17,8 +17,7 @@
   <div ng-controller="ChessboardController">
     <div ng-controller="PiecesController">
       <div ng-controller="GameController">
-      <button ng-click="init(); newGame()">Starting Chess Position</button>
-      <button ng-click="init(); famousGame()">Fischer vs. Benko 1961 White To Move</button>
+      <button ng-click="init(); newGame()" class="new-game">New Game</button>
         <table>
           <tbody>
             <tr ng-repeat="row in board">
@@ -43,6 +42,32 @@
             </tr>
           </tbody>
         </table>
+        <!-- <table>
+          <tbody>
+            <tr ng-repeat="row in board | reverse">
+              <td ng-drop="true" 
+                  ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)" 
+                  ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
+                  ng-repeat="square in row | reverse"
+                  ng-model="squareColor"
+
+                  >
+                  
+                <img id="{{$index.toString().concat($parent.$index)}}"
+                     ng-drag="true" 
+                     ng-drag-data="board[$index][$parent.$index].piece"
+                     ng-drag-success="onDrag($data, $event)"
+                     ng-src="{{getImage($index, $parent.$index)}}"
+
+                     >
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button ng-click="flipBoard()">
+          <i class="glyphicon glyphicon-random"></i>
+        </button> -->
       </div>
     </div>
   </div>

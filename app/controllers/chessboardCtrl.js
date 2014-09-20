@@ -1,9 +1,24 @@
 var app = angular.module('LaLuzDeAjedrez');
 
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
+
 app.controller('ChessboardController', ['$rootScope','$scope', 
   function($rootScope, $scope) {
 
     // TODO: check scopes of the functions. some may not need to be scoped;
+
+    $scope.reverse = false;
+
+    $scope.flipBoard = function() {
+      console.log('flippi boes');
+      $scope.reverse = !$scope.reverse;
+      console.log($scope.reverse);
+    }
+
 
     $scope.init = function() {
       $scope.board = new Array(8);

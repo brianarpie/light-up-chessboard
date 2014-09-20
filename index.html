@@ -19,9 +19,10 @@
       <div ng-controller="GameController">
       <button ng-click="init(); newGame()">Setup Starting Chess Position (only press once)</button>
       <button ng-click="init(); famousGame()">Fischer vs. Benko 1961 White To Move</button>
+      <button ng-click="init(); newPieceControllerTest()">Test New Piece Controller</button>
         <table>
           <tbody>
-            <tr ng-repeat="row in squares">
+            <tr ng-repeat="row in board">
 
               <td ng-drop="true" 
                   ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)" 
@@ -33,8 +34,8 @@
                   
                 <img id="{{$index.toString().concat($parent.$index)}}"
                      ng-drag="true" 
-                     ng-drag-data="squares[$index][$parent.$index].piece"
-                     ng-drag-success="precompute($data, $event)"
+                     ng-drag-data="board[$index][$parent.$index].piece"
+                     ng-drag-success="onDrag($data, $event)"
                      ng-src="{{getImage($index, $parent.$index)}}"
 
                      >

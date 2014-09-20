@@ -3,98 +3,124 @@ var app = angular.module('LaLuzDeAjedrez');
 app.controller('ChessboardController', ['$rootScope','$scope', 
   function($rootScope, $scope) {
 
+    // TODO: check scopes of the functions. some may not need to be scoped;
+
     function init() {
-      $scope.squares = new Array(8);
+      $scope.board = new Array(8);
       for(var i = 0, len = 8; i < len; i++) {
-        $scope.squares[i] = new Array(8);
+        $scope.board[i] = new Array(8);
       }
-      var x = 0, y = 0, len = 8;
+      var x, y, len = 8;
       for (x = 0 ; x < len; x++) {
         for (y = 0 ; y < len; y++) {
-          $scope.squares[x][y] = {};
-          $scope.squares[x][y].white_counters = 0;
-          $scope.squares[x][y].black_counters = 0;
+          $scope.board[x][y] = {};
+          $scope.board[x][y].white_counters = 0;
+          $scope.board[x][y].black_counters = 0;
         }
       }
 
     }
 
-    function searchArray(arr, val) {
-      var hash = {};
-      for (var i = 0, len = arr.length; i < len; i++) {
-        hash[arr[i]] = i;
+    function removeAllCounters() {
+      for (var x = 0; x < 8; x++) {
+        for (var y = 0; y < 8; y++) {
+          if (!$.isEmptyObject($scope.board[x][y].piece) && !$scope.board[x][y].piece.isPawn) {
+            if ($scope.board[x][y].piece.color === 'white') {
+              $scope.removeWhitePiece($scope.board[x][y].piece);
+            } else {
+              $scope.removeBlackPiece($scope.board[x][y].piece);
+            }
+          }
+        }
       }
-      if (hash.hasOwnProperty(val)) {
-        return true;
-      } else {
-        return false;
+    }
+    function recomputeAllCounters() {
+      for (var x = 0; x < 8; x++) {
+        for (var y = 0; y < 8; y++) {
+          if (!$.isEmptyObject($scope.board[x][y].piece) && !$scope.board[x][y].piece.isPawn) {
+            if ($scope.board[x][y].piece.color === 'white') {
+              $scope.addWhitePiece($scope.board[x][y].piece);
+            } else {
+              $scope.addBlackPiece($scope.board[x][y].piece);
+            }
+          }
+        }
       }
-
     }
 
     $scope.onDropComplete = function(event, data, x, y) {
       var piece = event;
-      var curr_x = $scope.current_x;
-      var curr_y = $scope.current_y;
-      if ($scope.squares[curr_x][curr_y].piece.color) {
-        if (piece.color === 'white') {
-          $scope.removeWhitePiece(piece, curr_x, curr_y);
-        } else {
-          $scope.removeBlackPiece(piece, curr_x, curr_y);
-        }
-        $scope.squares[curr_x][curr_y].piece = {};
+      
+      $scope.board[x][y].piece = piece;
+
+      $scope.board[x][y].piece.setPosition(x, y);
+
+      if (piece.color == 'white') {
+        $scope.addWhitePiece(piece);
+      } else {
+        $scope.addBlackPiece(piece);
       }
 
-      $scope.squares[x][y].piece = piece;
-      $scope.squares[x][y].piece.x = x;
-      $scope.squares[x][y].piece.y = y;
-      if (piece.color == 'white') {
-        $scope.addWhitePiece(piece, x, y);
-      } else {
-        $scope.addBlackPiece(piece, x, y);
+      if (piece.isPawn) {
+        recomputeAllCounters();
       }
+
     }
 
     // future use
-    $scope.precompute = function(event, data) {
-      $scope.current_x = event.x;
-      $scope.current_y = event.y;
+    $scope.onDrag = function(event, data) {
+      var square = $scope.board[event.x][event.y]
+
+      if (square.piece.isPawn) {
+        removeAllCounters();
+      }
+
+      if (square.piece) {
+        if (square.piece.color === 'white') {
+          $scope.removeWhitePiece(square.piece);
+        } else {
+          $scope.removeBlackPiece(square.piece);
+        }
+        square.piece = {};
+      }
+
     }
 
     $scope.getBackgroundColor = function(x, y) {
       var color, totalCounters;
-      var black = $scope.squares[x][y].black_counters;
-      var white = $scope.squares[x][y].white_counters;
+      var black = $scope.board[x][y].black_counters;
+      var white = $scope.board[x][y].white_counters;
+      
       totalCounters = white - black;
+      
       if (white + black === 0 ) {
         return 'white';
       }
+      
       color = $scope.opacity_chart(totalCounters);
-      if (!color) debugger;
+      
       return 'rgba('+color.r+','+color.g+','+color.b+','+color.a+')';
     }
 
     $scope.getImage = function(x, y) {
-      if ($scope.squares[x][y].piece && $scope.squares[x][y].piece.color) {
-        return $scope.squares[x][y].piece.imgUrl($scope.squares[x][y].piece.color);
+      if ($scope.board[x][y].piece && $scope.board[x][y].piece.color) {
+        return $scope.board[x][y].piece.imgUrl($scope.board[x][y].piece.color);
       } else {
         return ' ';
       }
     }
 
-    $scope.$watch('squareColor', function(id) {
-      console.log(id);
-    });
-
     $scope.addPiece = function(name, color, x, y) {
-      $scope.squares[x][y].piece = getPieceObject(name);
-      $scope.squares[x][y].piece.setPosition(x, y);
+      $scope.board[x][y].piece = getPieceObject(name);
+      $scope.board[x][y].piece.setPosition(x, y);
+      $scope.board[x][y].piece.name = name;
       
-      $scope.squares[x][y].piece.color = color;
+      $scope.board[x][y].piece.color = color;
+
       if (color == 'white') {
-        $scope.addWhitePiece($scope.squares[x][y].piece, x, y);
+        $scope.addWhitePiece($scope.board[x][y].piece);
       } else {
-        $scope.addBlackPiece($scope.squares[x][y].piece, x, y);
+        $scope.addBlackPiece($scope.board[x][y].piece);
       }
 
     }
@@ -133,56 +159,59 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     }
 
     $scope.addWhiteCounter = function(x, y) {
-      $scope.squares[x][y].white_counters++;
+      $scope.board[x][y].white_counters++;
     };
 
     $scope.deleteWhiteCounter = function(x, y) {
-      $scope.squares[x][y].white_counters--;
+      if ($scope.board[x][y].white_counters > 0) {
+        $scope.board[x][y].white_counters--;
+      }
     };
 
     $scope.addBlackCounter = function(x, y) {
-      $scope.squares[x][y].black_counters++;
+      $scope.board[x][y].black_counters++;
     };
 
     $scope.deleteBlackCounter = function(x, y) {
-      $scope.squares[x][y].black_counters--;
+      if ($scope.board[x][y].black_counters > 0) {
+        $scope.board[x][y].black_counters--;
+      }
     };
 
     $scope.clear = function() {
       var x, y, max;
       for (x = 0, max = 8; x < max; x++) {
         for (y = 0; y < max; y++) {
-          $scope.squares[x][y] = {};
+          $scope.board[x][y] = {};
         }
       }
     }
 
-    $scope.removeBlackPiece = function(piece, x, y) {
-      var arr = piece.legalMoves();
+    $scope.removeBlackPiece = function(piece) {
+      var arr = piece.activeSquares();
       for (var i = 0, len = arr.length; i < len; i++) {
-        $scope.deleteBlackCounter(arr[i][0], arr[i][1]);
+        $scope.deleteBlackCounter(arr[i].x, arr[i].y);
       }
     }
-    $scope.addBlackPiece = function(piece, x, y) {
-      var arr = piece.legalMoves();
+    $scope.addBlackPiece = function(piece) {
+      var arr = piece.activeSquares();
       for (var i = 0, len = arr.length; i < len; i++) {
-        $scope.addBlackCounter(arr[i][0], arr[i][1]);
+        $scope.addBlackCounter(arr[i].x, arr[i].y);
       }
     }
 
     // poorly named. for now we will overload it
-    $scope.addWhitePiece = function(piece, x, y) {
-
-      var arr = piece.legalMoves();
+    $scope.addWhitePiece = function(piece) {
+      var arr = piece.activeSquares();
       for (var i = 0, len = arr.length; i < len; i++) {
-        $scope.addWhiteCounter(arr[i][0], arr[i][1]);
+        $scope.addWhiteCounter(arr[i].x, arr[i].y);
       }
     }
 
-    $scope.removeWhitePiece = function(piece, x, y) {
-      var arr = piece.legalMoves();
+    $scope.removeWhitePiece = function(piece) {
+      var arr = piece.activeSquares();
       for (var i = 0, len = arr.length; i < len; i++) {
-        $scope.deleteWhiteCounter(arr[i][0], arr[i][1]);
+        $scope.deleteWhiteCounter(arr[i].x, arr[i].y);
       }
     }
 

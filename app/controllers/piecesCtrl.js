@@ -55,7 +55,7 @@ app.controller('PiecesController', ['$rootScope', '$scope',
         return moves;
       },
       imgUrl: function(color) {
-        return color === 'white' ? 'app/assets/images/pieces_60px/white-king.png'
+        return color === 'white' ? 'app/assets/images/pieces_60px_white/white-king.png'
                                  : 'app/assets/images/pieces_60px/black-king.png';
       }
     };
@@ -80,7 +80,7 @@ app.controller('PiecesController', ['$rootScope', '$scope',
         return moves;
       },
       imgUrl: function(color) {
-        return color === 'white' ? 'app/assets/images/pieces_60px/white-knight.png'
+        return color === 'white' ? 'app/assets/images/pieces_60px_white/white-knight.png'
                                  : 'app/assets/images/pieces_60px/black-knight.png';
       }
     };
@@ -149,7 +149,7 @@ app.controller('PiecesController', ['$rootScope', '$scope',
         return moves;
       },
       imgUrl: function(color) {
-        return color === 'white' ? 'app/assets/images/pieces_60px/white-rook.png'
+        return color === 'white' ? 'app/assets/images/pieces_60px_white/white-rook.png'
                                  : 'app/assets/images/pieces_60px/black-rook.png';
       }
     };
@@ -218,7 +218,7 @@ app.controller('PiecesController', ['$rootScope', '$scope',
         return moves;
       },
       imgUrl: function(color) {
-        return color === 'white' ? 'app/assets/images/pieces_60px/white-bishop.png'
+        return color === 'white' ? 'app/assets/images/pieces_60px_white/white-bishop.png'
                                  : 'app/assets/images/pieces_60px/black-bishop.png';
       }
     };
@@ -261,7 +261,7 @@ app.controller('PiecesController', ['$rootScope', '$scope',
 
       },
       imgUrl: function(color) {
-        return 'app/assets/images/pieces_60px/white-pawn.png';
+        return 'app/assets/images/pieces_60px_white/white-pawn.png';
       },
       isPawn: true
     };
@@ -421,7 +421,7 @@ app.controller('PiecesController', ['$rootScope', '$scope',
         return moves;
       },
       imgUrl: function(color) {
-        return color === 'white' ? 'app/assets/images/pieces_60px/white-queen.png'
+        return color === 'white' ? 'app/assets/images/pieces_60px_white/white-queen.png'
                                  : 'app/assets/images/pieces_60px/black-queen.png';
       }
     };

@@ -1,24 +1,7 @@
 var app = angular.module('LaLuzDeAjedrez');
 
-app.filter('reverse', function() {
-  return function(items) {
-    return items.slice().reverse();
-  };
-});
-
 app.controller('ChessboardController', ['$rootScope','$scope', 
   function($rootScope, $scope) {
-
-    // TODO: check scopes of the functions. some may not need to be scoped;
-
-    $scope.reverse = false;
-
-    $scope.flipBoard = function() {
-      console.log('flippi boes');
-      $scope.reverse = !$scope.reverse;
-      console.log($scope.reverse);
-    }
-
 
     $scope.init = function() {
       $scope.board = new Array(8);
@@ -49,6 +32,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
         }
       }
     }
+
     function recomputeAllCounters() {
       for (var x = 0; x < 8; x++) {
         for (var y = 0; y < 8; y++) {
@@ -63,8 +47,43 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       }
     }
 
-    $scope.onDropComplete = function(event, data, x, y) {
-      var piece = event;
+    $scope.onDrag = function(data, event) {
+      // console.log
+      // console.log(data)
+      // var piece = data.currentScope.square.piece;
+      // if (event) {
+        var square = $scope.board[data.x][data.y]
+        
+        // if (piece.isPawn) {
+          // removeAllCounters();
+        // }
+
+        if (square.piece.isPawn) {
+          removeAllCounters();
+        }
+        // if (piece) {
+        //   if (piece.color === 'white') {
+        //     $scope.removeWhitePiece(piece);
+        //   } else {
+        //     $scope.removeBlackPiece(piece);
+        //   }
+        //   square.piece = {};
+        // }
+        if (square.piece) {
+          if (square.piece.color === 'white') {
+            $scope.removeWhitePiece(square.piece);
+          } else {
+            $scope.removeBlackPiece(square.piece);
+          }
+          square.piece = {};
+        }
+        
+      // }
+
+    }
+
+    $scope.onDropComplete = function(data, event, x, y) {
+      var piece = data;
 
       if (!$.isEmptyObject($scope.board[x][y].piece)) {
         if ($scope.board[x][y].piece.color == 'white') {
@@ -75,8 +94,8 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       }
       
       $scope.board[x][y].piece = piece;
-
       $scope.board[x][y].piece.setPosition(x, y);
+      // console.log($scope.board[x][y].piece.imgUrl());
 
       if (piece.color == 'white') {
         $scope.addWhitePiece(piece);
@@ -88,25 +107,8 @@ app.controller('ChessboardController', ['$rootScope','$scope',
         recomputeAllCounters();
       }
 
-    }
 
-    // future use
-    $scope.onDrag = function(event, data) {
-      var square = $scope.board[event.x][event.y]
-
-      if (square.piece.isPawn) {
-        removeAllCounters();
-      }
-
-      if (square.piece) {
-        if (square.piece.color === 'white') {
-          $scope.removeWhitePiece(square.piece);
-        } else {
-          $scope.removeBlackPiece(square.piece);
-        }
-        square.piece = {};
-      }
-
+    
     }
 
     $scope.getBackgroundColor = function(x, y) {
@@ -125,11 +127,11 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       return 'rgba('+color.r+','+color.g+','+color.b+','+color.a+')';
     }
 
-    $scope.getImage = function(x, y) {
+    $scope.getImage = function(x, y, that) {
       if ($scope.board[x][y].piece && $scope.board[x][y].piece.color) {
         return $scope.board[x][y].piece.imgUrl($scope.board[x][y].piece.color);
       } else {
-        return ' ';
+        return '//:0';
       }
     }
 
@@ -148,38 +150,47 @@ app.controller('ChessboardController', ['$rootScope','$scope',
 
     }
 
-    $scope.opacity_chart = function(heatLevel) {
-      switch(heatLevel) {
-        case -6:
-          return {r: 255, g: 0, b: 0, a: 0.35};
-        case -5:
-          return {r: 255, g: 0, b: 0, a: 0.35};
-        case -4:
-          return {r: 255, g: 0, b: 0, a: 0.35};
-        case -3:
-          return {r: 255, g: 0, b: 0, a: 0.35};
-        case -2:
-          return {r: 255, g: 0, b: 0, a: 0.35};
-        case -1:
-          return {r: 255, g: 0, b: 0, a: 0.35};
-        case 0:
-          return {r: 255, g: 0, b: 255, a: 0.35};
-        case 1:
-          return {r: 0, g: 0, b: 255, a: 0.35};
-        case 2:
-          return {r: 0, g: 0, b: 255, a: 0.35};
-        case 3:
-          return {r: 0, g: 0, b: 255, a: 0.35};
-        case 4:
-          return {r: 0, g: 0, b: 255, a: 0.35};
-        case 5:
-          return {r: 0, g: 0, b: 255, a: 0.35};
-        case 6:
-          return {r: 0, g: 0, b: 255, a: 0.35};
-        default:
-          return {r: 255, g: 255, b: 255, a:0};
+    $scope.opacity_chart = function(count) {
+      if (!count) return { r: 255, g: 0, b: 255, a: 0.45};
+
+      return {
+        r: count > 0 ? 0 : 255,
+        g: 0,
+        b: count < 0 ? 0 : 255,
+        a: Math.abs(count) * 0.16 + 0.05
       }
     }
+
+
+    $scope.clickPiece = function(x, y) {
+
+    }
+
+    // $scope.opacity_chart = function(heatLevel) {
+    //   if (heatLevel < 0) {
+    //     return {
+    //       r: 255, 
+    //       g: 0, 
+    //       b: 0, 
+    //       a: 0.35
+    //     };
+    //   } else if (heatLevel == 0) {
+    //     return {
+    //       r: 255, 
+    //       g: 0, 
+    //       b: 255, 
+    //       a: 0.35
+    //     };
+    //   } else {
+    //     return {
+    //       r: 0, 
+    //       g: 0, 
+    //       b: 255, 
+    //       a: 0.35
+    //     };
+    //   }
+    // }
+
 
     $scope.addWhiteCounter = function(x, y) {
       $scope.board[x][y].white_counters++;

@@ -4,6 +4,7 @@ app.controller('WindowController', ['$scope',
   function($scope) {
 
     $scope.detailedView = function(option) {
+      $scope.detailed = option;
       console.log(option)
       if (option) {
         $scope.opacity_chart = function(count) {

@@ -151,13 +151,38 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     }
 
     $scope.opacity_chart = function(count) {
-      if (!count) return { r: 255, g: 0, b: 255, a: 0.45};
+      if ($scope.detailed) {
+        if (!count) return { r: 255, g: 0, b: 255, a: 0.45};
 
-      return {
-        r: count > 0 ? 0 : 255,
-        g: 0,
-        b: count < 0 ? 0 : 255,
-        a: Math.abs(count) * 0.16 + 0.05
+        return {
+          r: count > 0 ? 0 : 255,
+          g: 0,
+          b: count < 0 ? 0 : 255,
+          a: Math.abs(count) * 0.16 + 0.05
+        }
+      } else {
+        if (count < 0) {
+          return {
+            r: 255, 
+            g: 0, 
+            b: 0, 
+            a: 0.35
+          };
+        } else if (count == 0) {
+          return {
+            r: 255, 
+            g: 0, 
+            b: 255, 
+            a: 0.35
+          };
+        } else {
+          return {
+            r: 0, 
+            g: 0, 
+            b: 255, 
+            a: 0.35
+          };
+        }
       }
     }
 
@@ -167,28 +192,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     }
 
     // $scope.opacity_chart = function(heatLevel) {
-    //   if (heatLevel < 0) {
-    //     return {
-    //       r: 255, 
-    //       g: 0, 
-    //       b: 0, 
-    //       a: 0.35
-    //     };
-    //   } else if (heatLevel == 0) {
-    //     return {
-    //       r: 255, 
-    //       g: 0, 
-    //       b: 255, 
-    //       a: 0.35
-    //     };
-    //   } else {
-    //     return {
-    //       r: 0, 
-    //       g: 0, 
-    //       b: 255, 
-    //       a: 0.35
-    //     };
-    //   }
+
     // }
 
 

@@ -1,14 +1,34 @@
 td {
-  /*width:60px;*/
-  /*height:60px;*/
   border: 2px solid rgb(230, 230, 230);
 }
 .options {
-  margin: 0 auto;
+  margin: 50px auto;
   float:right;
   width: 400px;
   text-align:left;
 }
-.select {
-  /*display: block;*/
+.upload {
+  display: block;
+  text-align: left;
+  margin-top: 20px;
+}
+.title {
+  position:relative;
+  left:0;
+  right:0;
+  margin: 0px auto 0px auto;
+  text-align: center;
+  border-bottom: 2px solid rgb(230, 230, 230);
+  width: auto;
+  height: 50px;
+}
+.statistics {
+  float:left;
+  width: 344px;
+  height: 980px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+table.stats {
+  width: 100%;
 }

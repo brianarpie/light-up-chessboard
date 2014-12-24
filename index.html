@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="app/assets/stylesheets/styles.css">
 <link rel="stylesheet" href="app/assets/stylesheets/chessboard.css">
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/underscore/underscore-min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
@@ -19,42 +20,61 @@
     <div ng-controller="ChessboardController">
       <div ng-controller="PiecesController">
         <div ng-controller="GameController">
-          <div class="options">
-            <button ng-click="init(); newGame()" class="new-game">New Game</button>
-            <label>Detailed View</label>
-            <input type="checkbox"
-                   ng-model="option"
-                   ng-change="detailedView(option)"
-                   checked>
+          <div ng-controller="PgnController">
+            <div class="title">
+              <h3>{{gameTitle}}</h3>
+            </div>
+            <div class="statistics">
+              <table class="stats">
+              </table>
+            </div>
+            <div class="options">
+              <button ng-click="init(); newGame()" class="new-game">New Game</button>
+              <button ng-click="" class="new-game">Master Games</button>
+              <label>Detailed View</label>
+              <input type="checkbox"
+                     ng-model="option"
+                     ng-change="detailedView(option)"
+                     checked>
+              <div class="upload">
+                <label>PGN Upload</label>
+                <form enctype="multipart/form-data">
+                  <input name="file" type="file" class="file">
+                  <input type="button" value="Upload" class="button hidden">
+                </form>
+              </div>
+            </div>
+            <table class="board">
+              <tbody>
+                <tr ng-repeat="row in board">
+
+                  <td class="square"
+                      ng-drop="true" 
+                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"   
+                      ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
+                      ng-repeat="square in row"
+                      >
+                      
+                    <img id="{{$index.toString().concat($parent.$index)}}"
+                         ng-drag="true" 
+                         ng-drag-data="board[$index][$parent.$index].piece"
+                         ng-drag-success="onDrag($data, $event)"
+                         ng-src="{{getImage($index, $parent.$index, this)}}"
+                         ng-click="clickPiece($index, $parent.$index)"
+                         
+
+                         >
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <table>
-            <tbody>
-              <tr ng-repeat="row in board">
-
-                <td ng-drop="true" 
-                    ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)" 
-                    ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
-                    ng-repeat="square in row"
-                    >
-                    
-                  <img id="{{$index.toString().concat($parent.$index)}}"
-                       ng-drag="true" 
-                       ng-drag-data="board[$index][$parent.$index].piece"
-                       ng-drag-success="onDrag($data, $event)"
-                       ng-src="{{getImage($index, $parent.$index, this)}}"
-                       ng-click="clickPiece($index, $parent.$index)"
-                       
-
-                       >
-
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
   </div>
+<script src="app/controllers/pgnCtrl.js"></script>
 <script src="app/controllers/windowCtrl.js"></script>
 <script src="app/controllers/chessboardCtrl.js"></script>
 <script src="app/controllers/piecesCtrl.js"></script>

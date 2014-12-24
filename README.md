@@ -4,32 +4,17 @@ by Brian David Arpie
 ## Architecture:
 - app
   - assets
-    - pieces
-      - king.js
-      - queen.js
-      - bishop.js
-      - knight.js
-      - rook.js
-      - pawn_w.js
-      - pawn_b.js
-    - stylesheets
-      - chessboard.css
-      - game_window.css
+    - games
     - images
-      - king.png
-      - queen.png
-      - bishop.png
-      - knight.png
-      - rook.png
-      - pawn_w.png
-      - pawn_b.png
+    - positions
+    - stylesheets
   - controllers
-    - chessboard_ctrl.js
-    - game_ctrl.js
+    - chessboardCtrl.js
+    - gameCtrl.js
+    - pgnCtrl.js
+    - piecesCtrl.js
+    - windowCtrl.js
+  - services
+    - pgnMoveService.js
   - views
-    - chessboard.html
     - game_window.html
-  - resources
-    - jquery (pending)
-    - angularjs (pending)
-    - bootstrap (pending)

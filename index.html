@@ -59,13 +59,13 @@
                       
                     <img id="{{$index.toString().concat($parent.$index)}}"
                          ng-src="{{getImage($index, $parent.$index, this)}}"
-                         ng-click="clickPiece($index, $parent.$index)"
-                         
                          ng-drag="true" 
                          ng-drag-data="board[$index][$parent.$index].piece"
                          ng-drag-success="onDrag($data, $event)"
 
                          >
+                         <!-- ng-click="clickPiece($index, $parent.$index)" -->
+                         
 
                   </td>
                 </tr>

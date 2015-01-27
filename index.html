@@ -53,19 +53,19 @@
                       ng-repeat="square in row"
                       ng-model="selected"
                       ng-class="{'highlighted-box':selected}"
+                      ng-drop="true" 
+                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"   
                       >
-                      <!-- ng-drop="true" 
-                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)" -->   
                       
                     <img id="{{$index.toString().concat($parent.$index)}}"
                          ng-src="{{getImage($index, $parent.$index, this)}}"
                          ng-click="clickPiece($index, $parent.$index)"
                          
+                         ng-drag="true" 
+                         ng-drag-data="board[$index][$parent.$index].piece"
+                         ng-drag-success="onDrag($data, $event)"
 
                          >
-                         <!-- ng-drag="true" 
-                         ng-drag-data="board[$index][$parent.$index].piece"
-                         ng-drag-success="onDrag($data, $event)" -->
 
                   </td>
                 </tr>

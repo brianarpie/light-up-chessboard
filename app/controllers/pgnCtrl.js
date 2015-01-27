@@ -19,7 +19,6 @@
       function init() {
         $('.upload .file').change(verifyFileExt);
         $('.upload .button').click(uploadFile);
-        PgnMoveService.testSerivce('hello world!');
       }
 
       function uploadFile() { 
@@ -44,6 +43,7 @@
       // TODO: make sure level one captures the "1.", everything else is fine though.
 
       // the start of the pipeline, no mistakes from here on out.
+
       function processPgn(fileEvent) {
         var pgnBatch = fileEvent.target.result;
         var lines = pgnBatch.split(pattern.gameInfo);
@@ -66,6 +66,7 @@
 
         somethingElse[0] = somethingElse[0].slice(2);
         console.log('level 2 ',somethingElse);
+        PgnMoveService.makeMove(somethingElse[0]);
 
         // CURRENT PROGRESS -- each move is in the array, time to map to the array indices
         // all possible information we can extract from a move.
@@ -96,71 +97,50 @@
       }
 
       function handleGameStats(stat) {
-        var keyValuePair = [];
-        keyValuePair = stat.split(' "');
-        var attr = keyValuePair[0].trim().slice(1);
-        var secondDelimiter = keyValuePair[1].indexOf('"');
+        var statKeyValuePair = stat.split(' "');
+        var attribute = statKeyValuePair[0].trim().slice(1);
+        var secondDelimiter = statKeyValuePair[1].indexOf('"');
+        var statValue = statKeyValuePair[1].slice(0, secondDelimiter);
 
-        var val = keyValuePair[1].slice(0, secondDelimiter);
-        if (attr == 'White' || attr == 'Black') {
-          appendToTitle(attr, val);
+        if (attribute == 'White' || attribute == 'Black') {
+          appendToTitle(attribute, statValue);
         }
-        // populate DOM elements
-        $('table.stats')
-          .append($('<tr>')
-            .append($('<td>')
-              .text(attr))
-            .append($('<td>')
-              .text(val)));
+
+        $('table.stats').append($('<tr>')
+          .append($('<td>').text(attribute))
+          .append($('<td>').text(statValue)));
       }
 
       function appendToTitle(color, player) {
-        if (color == 'White') {
-          $scope.gameTitle = player;
-        } else  {
-          $scope.$apply(function() {
-            $scope.gameTitle = $scope.gameTitle + ' vs. '+ player;
-          });
-        }
+        $scope.gameTitle = (color.match(/white/i)) ? player : [$scope.gameTitle, ' vs ', player].join('');
+        $scope.$digest();
       }
 
       // hopefully this can be implemented in the backend to simply support these characters instead of full names as namespaces
-      var chessPieceMapping = {
-        K: 'king',
-        Q: 'queen',
-        N: 'knight',
-        R: 'rook',
-        B: 'bishop'
-      };
+      // var chessPieceMapping = {
+      //   K: 'king',
+      //   Q: 'queen',
+      //   N: 'knight',
+      //   R: 'rook',
+      //   B: 'bishop'
+      // };
 
-      var chessboardCoordinateMapping = {
-        a: 0,
-        b: 1,
-        c: 2,
-        d: 3,
-        e: 4,
-        f: 5,
-        g: 6,
-        h: 7
-      };
-
-      function handleGameMoves(moves) {
-
-      }
-
-      function translateMoves(moves) {
-
-      }
+      // var chessboardCoordinateMapping = {
+      //   a: 0,
+      //   b: 1,
+      //   c: 2,
+      //   d: 3,
+      //   e: 4,
+      //   f: 5,
+      //   g: 6,
+      //   h: 7
+      // };
 
       // matches (1-0, 0-1, & 1/2-1/2) taking into consideration possible spaces.
       var gameoverPattern = /[ 012]-[ 012]/;
 
       // matches the number for every move e.g. (1. N)f3 or 1(4.e)5
       var newMovePattern = /\d\.\D/;
-
-      function setGameTitle(title) {
-        $scope.gameTitle = title;
-      }
 
       $scope.loadPGN = function() {
 

@@ -32,3 +32,6 @@ td {
 table.stats {
   width: 100%;
 }
+.highlighted-box {
+  background: rgba(100,50,25,0.5);
+}

@@ -20,3 +20,6 @@ table.board {
 img, i {
   cursor: pointer;
 }
+.highlighted-box {
+  cursor: crosshair;
+}

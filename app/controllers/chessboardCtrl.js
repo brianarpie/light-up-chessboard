@@ -48,38 +48,20 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     }
 
     $scope.onDrag = function(data, event) {
-      // console.log
-      // console.log(data)
-      // var piece = data.currentScope.square.piece;
-      // if (event) {
-        var square = $scope.board[data.x][data.y]
-        
-        // if (piece.isPawn) {
-          // removeAllCounters();
-        // }
+      var square = $scope.board[data.x][data.y]
 
-        if (square.piece.isPawn) {
-          removeAllCounters();
-        }
-        // if (piece) {
-        //   if (piece.color === 'white') {
-        //     $scope.removeWhitePiece(piece);
-        //   } else {
-        //     $scope.removeBlackPiece(piece);
-        //   }
-        //   square.piece = {};
-        // }
-        if (square.piece) {
-          if (square.piece.color === 'white') {
-            $scope.removeWhitePiece(square.piece);
-          } else {
-            $scope.removeBlackPiece(square.piece);
-          }
-          square.piece = {};
-        }
-        
-      // }
+      if (square.piece.isPawn) {
+        removeAllCounters();
+      }
 
+      if (square.piece) {
+        if (square.piece.color === 'white') {
+          $scope.removeWhitePiece(square.piece);
+        } else {
+          $scope.removeBlackPiece(square.piece);
+        }
+        square.piece = {};
+      }    
     }
 
     $scope.onDropComplete = function(data, event, x, y) {
@@ -95,7 +77,6 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       
       $scope.board[x][y].piece = piece;
       $scope.board[x][y].piece.setPosition(x, y);
-      // console.log($scope.board[x][y].piece.imgUrl());
 
       if (piece.color == 'white') {
         $scope.addWhitePiece(piece);
@@ -105,13 +86,12 @@ app.controller('ChessboardController', ['$rootScope','$scope',
 
       if (piece.isPawn) {
         recomputeAllCounters();
-      }
-
-
-    
+      }    
     }
 
     $scope.getBackgroundColor = function(x, y) {
+      if ($scope.board[x][y].selected == true) return 'rgba(0, 0, 0, 0.5)';
+
       var color, totalCounters;
       var black = $scope.board[x][y].black_counters;
       var white = $scope.board[x][y].white_counters;
@@ -188,13 +168,10 @@ app.controller('ChessboardController', ['$rootScope','$scope',
 
 
     $scope.clickPiece = function(x, y) {
+      // debugger
 
+      $scope.board[x][y].selected = true;
     }
-
-    // $scope.opacity_chart = function(heatLevel) {
-
-    // }
-
 
     $scope.addWhiteCounter = function(x, y) {
       $scope.board[x][y].white_counters++;

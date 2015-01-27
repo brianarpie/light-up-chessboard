@@ -19,7 +19,7 @@
   <div ng-controller="WindowController">
     <div ng-controller="ChessboardController">
       <div ng-controller="PiecesController">
-        <div ng-controller="GameController">
+        <div ng-controller="GameController"><!-- should be between window and chessboard -->
           <div ng-controller="PgnController">
             <div class="title">
               <h3>{{gameTitle}}</h3>
@@ -48,22 +48,24 @@
               <tbody>
                 <tr ng-repeat="row in board">
 
-                  <td class="square"
-                      ng-drop="true" 
-                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"   
+                  <td class="square highlighted-box"
                       ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
                       ng-repeat="square in row"
+                      ng-model="selected"
+                      ng-class="{'highlighted-box':selected}"
                       >
+                      <!-- ng-drop="true" 
+                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)" -->   
                       
                     <img id="{{$index.toString().concat($parent.$index)}}"
-                         ng-drag="true" 
-                         ng-drag-data="board[$index][$parent.$index].piece"
-                         ng-drag-success="onDrag($data, $event)"
                          ng-src="{{getImage($index, $parent.$index, this)}}"
                          ng-click="clickPiece($index, $parent.$index)"
                          
 
                          >
+                         <!-- ng-drag="true" 
+                         ng-drag-data="board[$index][$parent.$index].piece"
+                         ng-drag-success="onDrag($data, $event)" -->
 
                   </td>
                 </tr>
@@ -79,5 +81,6 @@
 <script src="app/controllers/chessboardCtrl.js"></script>
 <script src="app/controllers/piecesCtrl.js"></script>
 <script src="app/controllers/gameCtrl.js"></script>
+<script src="app/services/pgnMoveService.js"></script>
 </body>
 </html>

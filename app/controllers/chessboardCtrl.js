@@ -90,9 +90,10 @@ app.controller('ChessboardController', ['$rootScope','$scope',
     }
 
     $scope.getBackgroundColor = function(x, y) {
-      if ($scope.board[x][y].selected == true) return 'rgba(0, 0, 0, 0.5)';
+      // if ($scope.board[x][y].selected == true) return 'rgba(0, 0, 0, 0.5)';
 
       var color, totalCounters;
+      
       var black = $scope.board[x][y].black_counters;
       var white = $scope.board[x][y].white_counters;
       

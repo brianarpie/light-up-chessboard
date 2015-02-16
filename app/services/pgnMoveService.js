@@ -7,7 +7,7 @@
   app.service('PgnMoveService', function() {
     
     this.makeMove = function(moveNotation) {
-      moveNotation
+      //  moveNotation
     };
 
   });

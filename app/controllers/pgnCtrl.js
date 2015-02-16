@@ -48,6 +48,7 @@
         var pgnBatch = fileEvent.target.result;
         var lines = pgnBatch.split(pattern.gameInfo);
         var moveList;
+        
         _.each(lines, function(line) {
           if (line.indexOf('[') > -1) {
             handleGameStats(line);

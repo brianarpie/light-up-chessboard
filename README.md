@@ -1,4 +1,4 @@
-https://magnum.travis-ci.com/buwuwei/la-luz-de-ajedrez.svg?token=AKiSa35xbqQMse2vmyjZ&branch=master
+[![Build Status](https://magnum.travis-ci.com/buwuwei/la-luz-de-ajedrez.svg?token=AKiSa35xbqQMse2vmyjZ&branch=master)](https://magnum.travis-ci.com/buwuwei/la-luz-de-ajedrez)
 
 ## Javascript Chess Lightup Board
 by Brian David Arpie

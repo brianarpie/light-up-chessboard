@@ -5,14 +5,10 @@
   "authors": [
     "buwuwei <brian.arpie@gmail.com>"
   ],
-  "description": "Ajedrez para ellos que no tengan el tiempo revisar sus habilidades.",
+  "description": "Chess visualization board.",
   "license": "MIT",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+
   ],
   "dependencies": {
     "angular-route": "~1.2.23",

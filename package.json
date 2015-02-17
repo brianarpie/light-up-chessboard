@@ -3,6 +3,26 @@
     "karma": "~0.12"
   },
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
-  }
+    "test": "karma start --single-run --browsers PhantomJS"
+  },
+  "dependencies": {
+    "karma": "^0.12.31"
+  },
+  "name": "la-luz-de-ajedrez",
+  "description": "[![Build Status](https://magnum.travis-ci.com/buwuwei/la-luz-de-ajedrez.svg?token=AKiSa35xbqQMse2vmyjZ&branch=master)](https://magnum.travis-ci.com/buwuwei/la-luz-de-ajedrez)",
+  "version": "0.0.1",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buwuwei/la-luz-de-ajedrez.git"
+  },
+  "author": "Brian David Arpie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buwuwei/la-luz-de-ajedrez/issues"
+  },
+  "homepage": "https://github.com/buwuwei/la-luz-de-ajedrez"
 }

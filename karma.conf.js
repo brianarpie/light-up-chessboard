@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Tue Feb 17 2015 01:15:58 GMT-0500 (EST)
+// Generated on Tue Feb 17 2015 01:43:55 GMT-0500 (EST)
 
 module.exports = function(config) {
   config.set({
@@ -15,6 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'test-main.js',
       {pattern: 'test/**/*Spec.js', included: false}
     ],
 
@@ -55,7 +56,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox', 'Safari'],
+    browsers: ['Chrome', 'Safari', 'Firefox'],
 
 
     // Continuous Integration mode

@@ -1,0 +1,1 @@
+chessboardCtrlSpec.js

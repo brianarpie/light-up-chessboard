@@ -8,7 +8,8 @@
   "description": "Chess visualization board.",
   "license": "MIT",
   "ignore": [
-
+    "node_modules",
+    "bower_components"
   ],
   "dependencies": {
     "angular-route": "~1.2.23",

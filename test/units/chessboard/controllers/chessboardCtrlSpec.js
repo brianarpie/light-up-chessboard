@@ -1,1 +1,7 @@
-chessboardCtrlSpec.js
+(function() {
+
+  "use strict";
+
+  
+
+})();

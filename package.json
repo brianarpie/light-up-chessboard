@@ -1,8 +1,8 @@
 {
   "devDependencies": {
     "karma": "~0.12",
-    "karma-firefox-launcher": "^0.1.4",
-    "karma-safari-launcher": "^0.1.1"
+    "karma-firefox-launcher": "0.1.4",
+    "karma-safari-launcher": "0.1.1"
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"

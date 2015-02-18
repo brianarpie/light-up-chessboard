@@ -23,10 +23,6 @@
       expect($scope.board[x][y].selected).toBe(true);
     });
 
-    it("should assert true to be true", function() {
-      expect(true).toBe(true);
-    });
-
   });
 
 })();

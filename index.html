@@ -6,13 +6,12 @@
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="app/assets/stylesheets/styles.css">
 <link rel="stylesheet" href="app/assets/stylesheets/chessboard.css">
-<!-- i don't think i need to add jquery to dependencies -->
 </head>
 <body ng-app="LaLuzDeAjedrez">
   <div ng-controller="WindowController">
     <div ng-controller="ChessboardController">
       <div ng-controller="PiecesController">
-        <div ng-controller="GameController"><!-- should be between window and chessboard -->
+        <div ng-controller="GameController">
           <div ng-controller="PgnController">
             <div class="title">
               <h3>{{gameTitle}}</h3>
@@ -57,9 +56,7 @@
                          ng-drag-success="onDrag($data, $event)"
 
                          >
-                         <!-- ng-click="clickPiece($index, $parent.$index)" -->
                          
-
                   </td>
                 </tr>
               </tbody>

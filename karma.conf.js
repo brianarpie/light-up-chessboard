@@ -15,8 +15,18 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test-main.js',
-      {pattern: 'test/**/*Spec.js', included: false}
+      'node_modules/angular/angular.js',
+      'node_modules/angular-route/angular-route.js',
+      'node_modules/angular-mocks/angular-mocks.js',
+      'bower_components/ng-draggable/dist/js/ng-draggable.js',
+      'app/app.js',
+      'app/**/*.js',
+
+      {
+        pattern: 'test/**/*Spec.js', 
+        included: false
+      },
+      'test-main.js'
     ],
 
 

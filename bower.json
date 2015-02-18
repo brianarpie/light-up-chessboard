@@ -1,19 +1,23 @@
 {
-  "name": "La Luz de Ajedrez",
-  "version": "0.0.1",
+  "name": "La Luz de Ajedrez (working title)",
+  "version": "0.0.0",
   "homepage": "http://buwuwei.com",
   "authors": [
     "buwuwei <brian.arpie@gmail.com>"
   ],
-  "description": "Chess visualization board.",
+  "description": "a chess visualization board.",
   "license": "MIT",
   "ignore": [
     "node_modules",
-    "bower_components"
+    "bower_components",
+    "**/.*",
+    "test",
+    "tests"
   ],
   "dependencies": {
     "angular-route": "~1.2.23",
     "karma": "~0.4.3",
-    "underscore": "~1.7.0"
+    "underscore": "~1.7.0",
+    "ng-draggable": "~0.1.3"
   }
 }

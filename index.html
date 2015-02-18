@@ -46,7 +46,8 @@
                       ng-model="selected"
                       ng-class="{'highlighted-box':selected}"
                       ng-drop="true" 
-                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"   
+                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"
+                      
                       >
                       
                     <img id="{{$index.toString().concat($parent.$index)}}"

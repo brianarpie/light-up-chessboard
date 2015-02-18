@@ -2,21 +2,6 @@ var app = angular.module('LaLuzDeAjedrez');
 
 app.controller('PiecesController', ['$rootScope', '$scope',
   function($rootScope, $scope) {
-
-    // TODO: note in the readme this difference in data structure so that a future version can optimize accessing the data (which structure is faster to access)
-
-    // TODO: pieces need squares attacking (which is currently legal moves) and legal moves which will have to check for pawns and pieces of the same color. since color is or should be set immediately these controllers can query for the attribute, although it is never defined or instantiated in the controller itself.
-
-    // function isSomethingAt(x, y) {
-    //   var square = $scope.board[x][y];
-    //   try {
-    //     return square !== null &&
-    //       !JQuery.isEmptyObject(square.piece)
-    //   } catch(err) {
-    //     return false;
-    //   }
-    // }
-
     function isPawnAt(x, y) {
       var square = $scope.board[x][y];
       try {

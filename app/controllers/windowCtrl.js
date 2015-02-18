@@ -1,5 +1,5 @@
 var app = angular.module('LaLuzDeAjedrez');
-// debugger;
+
 app.controller('WindowController', ['$scope', 
   function($scope) {
 

@@ -1,7 +1,7 @@
 var app = angular.module('LaLuzDeAjedrez');
 
 app.controller('ChessboardController', ['$rootScope', '$scope', 
-  function($rootScope, $scope) {
+  function( $rootScope, $scope ) {
 
     $scope.init = function() {
       $scope.board = new Array(8);

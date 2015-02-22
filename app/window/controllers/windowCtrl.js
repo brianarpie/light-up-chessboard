@@ -5,6 +5,7 @@ app.controller('WindowController', ['$scope',
 
     $scope.detailedView = function(option) {
       $scope.detailed = option;
-    } 
+    };
+
   }
 ]);

@@ -3,9 +3,9 @@
 <head>
 <title>La Luz de Ajedrez</title>
 <meta description="la luz de ajedrez">
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="app/assets/stylesheets/styles.css">
-<link rel="stylesheet" href="app/assets/stylesheets/chessboard.css">
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="chessboard/stylesheets/chessboard.css">
+<link rel="stylesheet/less" type="text/css" href="index.less" />
 </head>
 <body ng-app="LaLuzDeAjedrez">
   <div ng-controller="WindowController">
@@ -68,18 +68,31 @@
     </div>
   </div>
 
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/underscore/underscore-min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-route/angular-route.min.js"></script>
-<script src="bower_components/ng-draggable/dist/js/ng-draggable.min.js"></script>
-<script src="app/app.js"></script>
-<script src="app/controllers/pgnCtrl.js"></script>
-<script src="app/controllers/windowCtrl.js"></script>
-<script src="app/controllers/chessboardCtrl.js"></script>
-<script src="app/controllers/piecesCtrl.js"></script>
-<script src="app/controllers/gameCtrl.js"></script>
-<script src="app/services/pgnMoveService.js"></script>
+<!-- set options before less.js script -->
+<script>
+  less = {
+    env: "development",
+    async: false,
+    fileAsync: false,
+    poll: 1000,
+    functions: {},
+    dumpLineNumbers: "comments",
+    relativeUrls: false,
+    rootpath: ":/a.com/"
+  };
+</script>
+<script src="../bower_components/less/dist/less.min.js" type="text/javascript"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/underscore/underscore-min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="../bower_components/ng-draggable/dist/js/ng-draggable.min.js"></script>
+<script src="app.js"></script>
+<script src="pgnLoader/controllers/pgnCtrl.js"></script>
+<script src="window/controllers/windowCtrl.js"></script>
+<script src="chessboard/controllers/chessboardCtrl.js"></script>
+<script src="pieces/controllers/piecesCtrl.js"></script>
+<script src="game/controllers/gameCtrl.js"></script>
 </body>
 </html>

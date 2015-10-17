@@ -23,10 +23,9 @@ module.exports = function(config) {
       'app/**/*.js',
 
       {
-        pattern: 'test/**/*Spec.js', 
+        pattern: 'test/**/*Spec.js',
         included: false
-      },
-      'test-main.js'
+      }
     ],
 
 

@@ -11,7 +11,7 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-phantomjs-launcher',
       'karma-spec-reporter',
-      'karma-ng-html2js-preprocessor'
+      'karma-ng-html2js-preprocessor' // TODO : use this plugin
     ],
 
     // frameworks to use

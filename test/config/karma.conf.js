@@ -11,7 +11,7 @@ module.exports = function(config) {
       'karma-jasmine',
       'karma-phantomjs-launcher',
       'karma-spec-reporter',
-      'karma-ng-html2js-preprocessor' // TODO : use this plugin
+      'karma-ng-html2js-preprocessor'
     ],
 
     // frameworks to use
@@ -27,6 +27,7 @@ module.exports = function(config) {
       'bower_components/ng-draggable/ngDraggable.js',
       'app/app.js',
       'app/**/*.js',
+      'app/templates/*.html',
       'test/**/*.spec.js'
     ],
 

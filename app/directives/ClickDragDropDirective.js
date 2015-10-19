@@ -4,7 +4,7 @@
 
   var app = angular.module("LaLuzDeAjedrez");
 
-  app.directive("ClickDragDrop", function() {
+  app.directive("clickDragDrop", function() {
     function linker($scope, $element, $attrs) {
 
     }

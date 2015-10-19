@@ -5,9 +5,11 @@
   describe("Legal Move Service Unit Tests", function() {
 
     beforeEach(module("LaLuzDeAjedrez"));
-    beforeEach(inject(function($injector) {
+    beforeEach(inject(function() {
 
     }));
+
+
 
   });
 

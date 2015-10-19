@@ -6,7 +6,9 @@
 
   app.service("ChessboardService", [function() {
     var service = this;
-    
+
+    service.secret_key ="a2";
+
   }]);
 
 })();

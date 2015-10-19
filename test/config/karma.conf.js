@@ -49,7 +49,7 @@ module.exports = function(config) {
       },
       */
       moduleName: 'TemplateCache' // TODO: replace this with environment variable ?
-    }
+    },
 
 
     // test results reporter to use

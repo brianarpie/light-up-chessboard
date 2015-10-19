@@ -9,7 +9,7 @@
     var service = this;
 
     service.setPosition = function() {
-
+      ChessboardService.addPiece("pawn", )
     };
 
   }]);

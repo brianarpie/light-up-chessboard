@@ -13,7 +13,6 @@
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="bower_components/ng-draggable/ngDraggable.js"></script>
 <script src="app/app.js"></script>
-<!-- i don't think i need to add jquery to dependencies -->
 </head>
 <body ng-app="LaLuzDeAjedrez">
   <div ng-controller="WindowController">
@@ -53,19 +52,19 @@
                       ng-repeat="square in row"
                       ng-model="selected"
                       ng-class="{'highlighted-box':selected}"
-                      ng-drop="true" 
-                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"   
+                      ng-drop="true"
+                      ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"
                       >
-                      
+
                     <img id="{{$index.toString().concat($parent.$index)}}"
                          ng-src="{{getImage($index, $parent.$index, this)}}"
-                         ng-drag="true" 
+                         ng-drag="true"
                          ng-drag-data="board[$index][$parent.$index].piece"
                          ng-drag-success="onDrag($data, $event)"
 
                          >
                          <!-- ng-click="clickPiece($index, $parent.$index)" -->
-                         
+
 
                   </td>
                 </tr>

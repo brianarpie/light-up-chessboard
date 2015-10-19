@@ -27,11 +27,7 @@ module.exports = function(config) {
       'bower_components/ng-draggable/ngDraggable.js',
       'app/app.js',
       'app/**/*.js',
-
-      {
-        pattern: 'test/**/*Spec.js',
-        included: false
-      }
+      'test/**/*Spec.js'
     ],
 
 

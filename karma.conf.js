@@ -39,13 +39,23 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'app/**/*directive.html': ['ng-html2js']
     },
+
+    ngHtml2JsPreprocessor: {
+      /* TODO: resolve filepath for this non-rails application (if neccesary)
+      cacheIdFromPath: function(filepath) {
+        return "/assets" + filepath.split('/javascripts').pop();
+      },
+      */
+      moduleName: 'TemplateCache' // TODO: replace this with environment variable ?
+    }
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['dots', 'spec'],
 
 
     // web server port

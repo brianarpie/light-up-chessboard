@@ -15,34 +15,25 @@
 <script src="app/app.js"></script>
 </head>
 <body ng-app="LaLuzDeAjedrez">
-  <div ng-controller="WindowController">
+  <!-- Chessboard -->
+  <chessboard>
+  </chessboard>
+  <!-- <div ng-controller="ChessboardC"> -->
+  <!-- </div> -->
     <div ng-controller="ChessboardController">
       <div ng-controller="PiecesController">
-        <div ng-controller="GameController"><!-- should be between window and chessboard -->
-          <div ng-controller="PgnController">
             <div class="title">
               <h3>{{gameTitle}}</h3>
             </div>
-            <div class="statistics">
-              <table class="stats">
-              </table>
-            </div>
             <div class="options">
               <button ng-click="init(); newGame()" class="new-game">New Game</button>
-              <button ng-click="" class="new-game">Master Games</button>
-              <label>Detailed View</label>
               <input type="checkbox"
                      ng-model="option"
                      ng-change="detailedView(option)"
                      checked>
-              <div class="upload">
-                <label>PGN Upload</label>
-                <form enctype="multipart/form-data">
-                  <input name="file" type="file" class="file">
-                  <input type="button" value="Upload" class="button hidden">
-                </form>
-              </div>
             </div>
+            <!-- <></> -->
+            <!-- <chessboard></chessboard> -->
             <table class="board">
               <tbody>
                 <tr ng-repeat="row in board">
@@ -63,17 +54,12 @@
                          ng-drag-success="onDrag($data, $event)"
 
                          >
-                         <!-- ng-click="clickPiece($index, $parent.$index)" -->
-
-
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
-    </div>
   </div>
 <script src="app/controllers/pgnCtrl.js"></script>
 <script src="app/controllers/windowCtrl.js"></script>

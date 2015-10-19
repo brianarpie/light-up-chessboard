@@ -1,5 +1,5 @@
 var app = angular.module('LaLuzDeAjedrez');
-app.controller('GameController', ['$rootScope', '$scope', 
+app.controller('GameController', ['$rootScope', '$scope',
   function($rootScope, $scope) {
 
    $scope.gameTitle = "La Luz De Ajedrez";
@@ -48,35 +48,6 @@ app.controller('GameController', ['$rootScope', '$scope',
       $scope.addPiece('rook', 'white', 7, 7);
 
     };
-
-    // $scope.famousGame = function() {
-    //   // Robert James Fischer vs Pal Benko
-    //   // Curacao Candidates (1962) White to Move #22
-    //   $scope.addPiece('rook', 'black', 0, 0);
-    //   $scope.addPiece('rook', 'black', 5, 0);
-    //   $scope.addPiece('king', 'black', 7, 0);
-    //   $scope.addPiece('blackPawn', 'black', 0, 1);
-    //   $scope.addPiece('blackPawn', 'black', 6, 1);
-    //   $scope.addPiece('blackPawn', 'black', 7, 1);
-    //   $scope.addPiece('blackPawn', 'black', 1, 3);
-    //   $scope.addPiece('blackPawn', 'black', 5, 3);
-
-    //   $scope.addPiece('bishop', 'black', 5, 2);
-    //   $scope.addPiece('queen', 'black', 5, 6);
-
-    //   $scope.addPiece('whitePawn', 'white', 0, 6);
-    //   $scope.addPiece('whitePawn', 'white', 1, 6);
-    //   $scope.addPiece('whitePawn', 'white', 2, 6);
-    //   $scope.addPiece('whitePawn', 'white', 6, 6);
-    //   $scope.addPiece('whitePawn', 'white', 7, 4);
-
-    //   $scope.addPiece('bishop', 'white', 3, 5);
-    //   $scope.addPiece('rook', 'white', 3, 7);
-    //   $scope.addPiece('rook', 'white', 7, 7);
-    //   $scope.addPiece('queen', 'white', 4, 2);
-    //   $scope.addPiece('king', 'white', 1, 7);
-
-    // }
 
     $scope.newGame();
 

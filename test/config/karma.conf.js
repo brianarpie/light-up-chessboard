@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../../',
 
     plugins: [
       'karma-jasmine',
@@ -27,7 +27,7 @@ module.exports = function(config) {
       'bower_components/ng-draggable/ngDraggable.js',
       'app/app.js',
       'app/**/*.js',
-      'test/**/*Spec.js'
+      'test/**/*.spec.js'
     ],
 
 

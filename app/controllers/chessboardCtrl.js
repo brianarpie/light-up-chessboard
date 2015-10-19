@@ -1,6 +1,6 @@
 var app = angular.module('LaLuzDeAjedrez');
 
-app.controller('ChessboardController', ['$rootScope','$scope', 
+app.controller('ChessboardController', ['$rootScope','$scope',
   function($rootScope, $scope) {
 
     $scope.init = function() {
@@ -61,7 +61,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
           $scope.removeBlackPiece(square.piece);
         }
         square.piece = {};
-      }    
+      }
     }
 
     $scope.onDropComplete = function(data, event, x, y) {
@@ -74,7 +74,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
           $scope.removeBlackPiece($scope.board[x][y].piece);
         }
       }
-      
+
       $scope.board[x][y].piece = piece;
       $scope.board[x][y].piece.setPosition(x, y);
 
@@ -86,25 +86,23 @@ app.controller('ChessboardController', ['$rootScope','$scope',
 
       if (piece.isPawn) {
         recomputeAllCounters();
-      }    
+      }
     }
 
     $scope.getBackgroundColor = function(x, y) {
-      // if ($scope.board[x][y].selected == true) return 'rgba(0, 0, 0, 0.5)';
-
       var color, totalCounters;
-      
+
       var black = $scope.board[x][y].black_counters;
       var white = $scope.board[x][y].white_counters;
-      
+
       totalCounters = white - black;
-      
+
       if (white + black === 0 ) {
         return 'white';
       }
-      
+
       color = $scope.opacity_chart(totalCounters);
-      
+
       return 'rgba('+color.r+','+color.g+','+color.b+','+color.a+')';
     }
 
@@ -120,7 +118,7 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       $scope.board[x][y].piece = getPieceObject(name);
       $scope.board[x][y].piece.setPosition(x, y);
       $scope.board[x][y].piece.name = name;
-      
+
       $scope.board[x][y].piece.color = color;
 
       if (color == 'white') {
@@ -144,23 +142,23 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       } else {
         if (count < 0) {
           return {
-            r: 255, 
-            g: 0, 
-            b: 0, 
+            r: 255,
+            g: 0,
+            b: 0,
             a: 0.35
           };
         } else if (count == 0) {
           return {
-            r: 255, 
-            g: 0, 
-            b: 255, 
+            r: 255,
+            g: 0,
+            b: 255,
             a: 0.35
           };
         } else {
           return {
-            r: 0, 
-            g: 0, 
-            b: 255, 
+            r: 0,
+            g: 0,
+            b: 255,
             a: 0.35
           };
         }
@@ -231,12 +229,12 @@ app.controller('ChessboardController', ['$rootScope','$scope',
       }
     }
 
-    // protected 
-    
+    // protected
+
     function getPieceObject(name) {
     // ordered by most frequent piece
       switch(name) {
-        case 'whitePawn': 
+        case 'whitePawn':
           return angular.copy($rootScope.whitePawn);
         case 'blackPawn':
           return angular.copy($rootScope.blackPawn);

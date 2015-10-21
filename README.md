@@ -43,10 +43,8 @@
         - rook-image-black.png
         - rook-image-white.png
       - pawn/
-        - black-pawn-service.js
-        - black-pawn-service_test.js
-        - white-pawn-service.js
-        - white-pawn-service_test.js
+        - pawn-service.js
+        - pawn-service_test.js
         - pawn-image-black.png
         - pawn-image-white.png
       - queen/

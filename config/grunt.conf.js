@@ -59,7 +59,15 @@
         keepAlive: true, // If false, the grunt process stops when the test fails.
         noColor: false, // If true, protractor will not use colors in its output.
       },
-      run: {}
+      run: {},
+      saucelabs: {
+        options: {
+          args: {
+            sauceUser: process.env.SAUCE_USERNAME,
+            sauceKey: process.env.SAUCE_ACCESS_KEY
+          }
+        }
+      }
     },
   });
 
@@ -72,6 +80,8 @@
 
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('serve', ['connect', 'watch', 'less']);
-  grunt.registerTask('test', ['karma', 'connect', 'protractor']);
+  grunt.registerTask('test', ['karma', 'connect', 'protractor:run']);
+  grunt.registerTask('e2e-travisci', ['protractor:saucelabs']);
+  grunt.registerTask('unit', ['karma']);
 
 };

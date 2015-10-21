@@ -1,5 +1,10 @@
 language: node_js
 
+env:
+  global:
+    - secure: Vrb/ExBIklePr7mp1lSj+uoPT8zMqsgU8BwdNlpxlA1ZCR8Pvl/ObQJ7CG+PqvEH2bBMnz0XqGY5v066+Gmjx/3yf6hiO0IE6q+UVthcp6teA71zkPu2bdTAoQDNJaGF6CfJzMPky1zJ2ZDJ/lhAtvq/mo5WkyWnMJILKDpebHcaRMlGHmR+22t3xUAGbp8Is6do1o693PlFuH8EKf+6a7HB6NkDP2VRHIQXMdNF8qwKc0o0DJZhRtRpq9eD5DZaWZaRgoEif4gawVvsYfFH1NoVxw6WkaFtFjKCcC3oGlHwmtYj7MFj6BO4fl+hye4jTfFDjPpleaHqTA2hx9Cqm3kijxGIaWnRTz9/+HwF8OR0x9a2gH5qJCTwW6M/CjUBYopaHIdHmPHgWxYpkuIdxKpf+6f9f7PFqFS2HIBYycbVLIK7zMhWWv0dOKVplA+GidNNWBaKAgguCEuAWj4YyEtmVCmk/G3zfpu6BxdvLAOxvCfSbTstJyiiu8EMn0fKrv58YBBaUxF32p+iMumv/VIT7a/Qz9zP3n7Z191InmIa+tuLYxh/ETXq2SCqYJUQEII3g1DUKAGzbuSRZHjh6vqSPuc0IVLl8mzx83EWk4IpGAHmymagGTicWkXN87BHdZ7aDQ9CK1GsnzjxdGQqq+Vrgw2bXwNAyrPo/cPugzs=
+    - secure: WcJ25cuGgW2EeJ9x/cudQTgufjdb20XoFVYD93a7zcDQZOo8k9SXqkUGZz/FTUsjuXXjw/RI8t5JWBHuLguqatUjLXn68uYv/+UoqqUoEeAIXGA44m9BapXbFqotDeoNwdpcrhGiU7lH+6j2+tVDBQBLr+BUHtvM988eBkhwl6PG2FeZ44v4AS5EuRCuStFg1C8SbW0LHxgqGEPDIEMeRgYw3eGFvA14V/OlhyTQ+RRMIAUd3hsKOF1LQenhfjFljPLW+HrBiH95UNQWW8yaDSBBIQgvEzd+3SUwCT4J8XnX3c8/59l+a0BBRBUS2XwZ86gnc5cewMSP44hfCE5KRZN1YU17MAIPVyx9VL26LkSV5V6G+Np4GYyiVXJrKNavJSc4ISay7n3YEfLi/iGrcDsFXMIg29ii1Zi810nnuQW2JVtMkl15wedd6a6+2UsoR1OG6wgEyj1YKJ0f54WyTrRQXw0cuBLlhstzVe8v1uTwWXsYUy3tCl5FvaBrAwyCbSOOkPRQafU5bUW3ELS5nNs75M5xT0ttWsla4kUt6uii9/iL0BiLdRJSyf6WjwgsQ/W74PbpiWnfYr8jPgxPvR8B8E1htKUskoK7NNnWrPuvM/2J3+q/gzyNLmJh4kxorlSGas7FzRjHfzcdUZzlQszf9rkq0FnXfaUn/7AJYNM=
+
 before_script:
   - npm install
   # TODO: resolve ng-draggable dependency issue and
@@ -7,4 +12,5 @@ before_script:
   # - node_modules/bower/bin/bower install
 
 script:
-  - grunt --gruntfile config/grunt.conf.js test
+  - grunt --gruntfile config/grunt.conf.js unit
+  - grunt --gruntfile config/grunt.conf.js e2e-travisci

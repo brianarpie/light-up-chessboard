@@ -2,7 +2,6 @@
 
   "use strict";
 
-  /* Instantiate Angular Modules and Depedency Tree Here */
-  angular.module('LaLuzDeAjedrez', ['ngRoute', 'ngDraggable']);
+  angular.module('chess', ['ngRoute']);
 
 })();

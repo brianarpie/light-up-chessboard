@@ -14,60 +14,42 @@
 <script src="app/app.js"></script>
 
 </head>
-<body ng-app="LaLuzDeAjedrez">
-  <!-- Chessboard -->
-  <chessboard>
-  </chessboard>
-  <!-- <div ng-controller="ChessboardC"> -->
-  <!-- </div> -->
-  <div ng-controller="ChessboardController">
-    <div ng-controller="PiecesController">
-      <div class="title">
-        <h3>Ni hao plasodkasdom</h3>
-      </div>
-      <div class="options">
-        <button ng-click="init(); newGame()" class="new-game btn">
-          <span>New Game</span>
-        </button>
-        <input type="checkbox"
-               ng-model="option"
-               ng-change="detailedView(option)"
-               checked>
-      </div>
-      <!-- <></> -->
-      <!-- <chessboard></chessboard> -->
-      <table class="board">
-        <tbody>
-          <tr ng-repeat="row in board">
-
-            <td class="square highlighted-box"
-                ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
-                ng-repeat="square in row"
-                ng-model="selected"
-                ng-class="{'highlighted-box':selected}"
-                ng-drop="true"
-                ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"
-                >
-
-              <img id="{{$index.toString().concat($parent.$index)}}"
-                   ng-src="{{getImage($index, $parent.$index, this)}}"
-                   ng-drag="true"
-                   ng-drag-data="board[$index][$parent.$index].piece"
-                   ng-drag-success="onDrag($data, $event)"
-
-                   >
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<body ng-app="chess">
+  <div ng-controller="MainCtrl as main">
+    <h2>{{main.title}}</h2>
   </div>
+<!-- TODO: recreate this board -->
+<table class="board">
+  <tbody>
+    <tr ng-repeat="row in board">
+
+      <td class="square highlighted-box"
+          ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
+          ng-repeat="square in row"
+          ng-model="selected"
+          ng-class="{'highlighted-box':selected}"
+          ng-drop="true"
+          ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"
+          >
+
+        <img id="{{$index.toString().concat($parent.$index)}}"
+             ng-src="{{getImage($index, $parent.$index, this)}}"
+             ng-drag="true"
+             ng-drag-data="board[$index][$parent.$index].piece"
+             ng-drag-success="onDrag($data, $event)"
+
+             >
+      </td>
+    </tr>
+  </tbody>
+</table>
 <!-- <script src="app/controllers/pgnCtrl.js"></script>
 <script src="app/controllers/windowCtrl.js"></script>
 <script src="app/controllers/chessboardCtrl.js"></script>
 <script src="app/controllers/piecesCtrl.js"></script>
 <script src="app/controllers/gameCtrl.js"></script>
 <script src="app/services/pgnMoveService.js"></script> -->
+<script src="app/app-controller.js"></script>
 <script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     connect: {
       options: {
         port: 9001,
-        hostname: 'localhost'
+        hostname: (process.env.CI ? 'admin' : 'localhost')
       },
       test: {
       }

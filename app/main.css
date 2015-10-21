@@ -1,0 +1,71 @@
+td.square {
+  width: 62px;
+  height: 64px;
+  padding: 1px;
+}
+table.board {
+  margin: 50px auto 100px auto;
+}
+.new-game {
+  width: 180px;
+  height: 60px;
+  text-align: center;
+  background: #ff7f78;
+  color: #4f4966;
+  border: 3px solid #4f4966;
+  border-radius: 5px;
+  margin: 25px 0;
+  display: block;
+  text-transform: uppercase;
+}
+img,
+i {
+  cursor: pointer;
+}
+.highlighted-box {
+  cursor: crosshair;
+}
+* {
+  font-family: monospace;
+  font-size: 11px;
+}
+td {
+  border: 2px solid #e6e6e6;
+}
+.btn {
+  font-size: 20px;
+}
+.options {
+  margin: 50px auto;
+  float: right;
+  width: 400px;
+  text-align: left;
+}
+.upload {
+  display: block;
+  text-align: left;
+  margin-top: 20px;
+}
+.title {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 0px auto 0px auto;
+  text-align: center;
+  border-bottom: 2px solid #e6e6e6;
+  width: auto;
+  height: 50px;
+}
+.statistics {
+  float: left;
+  width: 344px;
+  height: 980px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+table.stats {
+  width: 100%;
+}
+.highlighted-box {
+  background: rgba(100, 50, 25, 0.5);
+}

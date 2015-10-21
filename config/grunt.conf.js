@@ -5,7 +5,7 @@
   grunt.initConfig({
     connect: {
       options: {
-        port: 9001, // must match port in protractor.conf.js
+        port: 9001,
         hostname: 'localhost'
       },
       test: {
@@ -23,9 +23,30 @@
         }
       }
     },
+    less: {
+      development: {
+        options: {
+          paths: ["app"]
+        },
+        files: {
+          "app/main.css": "app/main.less"
+        }
+      }
+    },
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      development: {
+        files: [
+          'index.html',
+          '<%= jshint.files %>',
+          'app/*.less',
+          'app/**/*.less'
+        ],
+        tasks: ['less', 'jshint'],
+        options: {
+          spawn: false,
+          livereload: true
+        }
+      }
     },
     karma: {
       unit: {
@@ -44,11 +65,13 @@
 
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-protractor-runner');
 
   grunt.registerTask('lint', ['jshint']);
-  grunt.registerTask('test', ['karma', 'connect', 'protractor'])
+  grunt.registerTask('serve', ['connect', 'watch', 'less']);
+  grunt.registerTask('test', ['karma', 'connect', 'protractor']);
 
 };

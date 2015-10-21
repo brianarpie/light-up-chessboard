@@ -10,9 +10,7 @@ addons:
 
 before_script:
   - npm install
-  # TODO: resolve ng-draggable dependency issue and
-  #   stop pushing bower components to repo
-  # - node_modules/bower/bin/bower install
+  - node_modules/bower/bin/bower install
 
 script:
   - grunt --gruntfile config/grunt.conf.js travis

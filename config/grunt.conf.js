@@ -6,7 +6,7 @@
     connect: {
       options: {
         port: 9001,
-        hostname: (process.env.CI ? 'admin' : 'localhost')
+        hostname: 'localhost'
       },
       test: {
       }
@@ -68,7 +68,7 @@
             sauceKey: process.env.SAUCE_ACCESS_KEY,
             "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER,
             build: process.env.TRAVIS_BUILD_NUMBER,
-            baseUrl: 'http://' + (process.env.CI ? 'admin' : 'localhost') + ':9001'
+            // baseUrl: 'http://' + (process.env.CI ? 'admin' : 'localhost') + ':9001'
           },
         }
       }

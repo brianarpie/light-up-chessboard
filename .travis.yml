@@ -15,5 +15,4 @@ before_script:
   # - node_modules/bower/bin/bower install
 
 script:
-  - grunt --gruntfile config/grunt.conf.js unit
-  - grunt --gruntfile config/grunt.conf.js e2e-travisci
+  - grunt --gruntfile config/grunt.conf.js travis

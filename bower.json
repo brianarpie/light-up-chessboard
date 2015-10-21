@@ -14,10 +14,12 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "angular-route": "~1.2.23",
-    "karma": "~0.4.3",
-    "underscore": "~1.7.0",
-    "ng-draggable": "~0.1.3"
+  "devDependencies": {
+    "angular": "~1.4.7",
+    "underscore": "~1.8.3",
+    "angular-route": "~1.4.7",
+    "angular-mocks": "~1.4.7",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
   }
 }

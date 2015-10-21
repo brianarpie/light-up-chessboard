@@ -25,6 +25,7 @@ module.exports = function(config) {
       'node_modules/angular-route/angular-route.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'bower_components/ng-draggable/ngDraggable.js',
+      'app/app.js',
       'app/*.js',
       'app/**/*.js',
       'app/**/*.html'

@@ -56,6 +56,7 @@
     protractor: {
       options: {
         configFile: 'config/protractor.conf.js',
+        framework: 'jasmine2',
         keepAlive: true, // If false, the grunt process stops when the test fails.
         noColor: false, // If true, protractor will not use colors in its output.
       },
@@ -64,8 +65,9 @@
         options: {
           args: {
             sauceUser: process.env.SAUCE_USERNAME,
-            sauceKey: process.env.SAUCE_ACCESS_KEY
-          }
+            sauceKey: process.env.SAUCE_ACCESS_KEY,
+            tunnel-identifier: process.env.TRAVIS_JOB_NUMBER
+          },
         }
       }
     },
@@ -81,7 +83,6 @@
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('serve', ['connect', 'watch', 'less']);
   grunt.registerTask('test', ['karma', 'connect', 'protractor:run']);
-  grunt.registerTask('e2e-travisci', ['protractor:saucelabs']);
-  grunt.registerTask('unit', ['karma']);
+  grunt.registerTask('travis', ['karma', 'connect', 'protractor:saucelabs']);
 
 };

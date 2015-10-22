@@ -57,15 +57,17 @@
       options: {
         configFile: 'config/protractor.conf.js',
         framework: 'jasmine2',
-        keepAlive: true, // If false, the grunt process stops when the test fails.
-        noColor: false, // If true, protractor will not use colors in its output.
+        keepAlive: true,
+        noColor: false,
       },
       run: {},
       saucelabs: {
         options: {
           args: {
-            sauceUser: process.env.SAUCE_USERNAME,
-            sauceKey: process.env.SAUCE_ACCESS_KEY
+            "sauceUser": process.env.SAUCE_USERNAME,
+            "sauceKey": process.env.SAUCE_ACCESS_KEY,
+            "build": process.env.TRAVIS_BUILD_NUMBER,
+            "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER
           },
         }
       }

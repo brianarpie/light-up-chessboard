@@ -7,7 +7,6 @@
       browser.get('http://www.angularjs.org');
       expect(true).toBe(true);
       browser.get('index.html');
-      // expect(browser.getCurrentUrl()).toMatch('/');
     });
   });
 

@@ -1,9 +1,6 @@
 exports.config = {
   specs: ['../e2e/*.js'],
   baseUrl: 'http://localhost:9001',
-  // multiCapabilities: [
-  //   { browserName: 'chrome' }
-  // ],
   capabilities: {
     build: process.env.TRAVIS_BUILD_NUMBER,
     "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER,

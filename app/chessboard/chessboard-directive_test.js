@@ -4,17 +4,19 @@
 
   describe("chessboard-directive unit test", function() {
 
-    var compile, scope, element, controller, ChessboardService;
+    var compile, scope, rootScope, element, controller, ChessboardService;
 
     beforeEach(module("templates"));
     beforeEach(module("chessboard"));
     beforeEach(inject(function($compile, $rootScope, $controller, _ChessboardService_) {
       scope = $rootScope.$new();
+      rootScope = $rootScope;
       compile = $compile;
       controller = $controller;
       ChessboardService = _ChessboardService_;
       spyOn(ChessboardService, "getBoard").and.callThrough();
       spyOn(ChessboardService, "convertIndexNotation").and.callThrough();
+      spyOn(rootScope, '$on').and.callThrough();
 
       element = angular.element("<chessboard></chessboard>");
       compile(element)(scope);
@@ -39,8 +41,8 @@
       expect(element.find("td").last().hasClass("h1")).toBe(true);
     });
 
-    it("should update the local chessboard variable when receiving the message ChessboardService::ChessboardUpdated", function() {
-      
+    it("should subscribe to ChessboardUpdated via the rootScope", function() {
+      expect(rootScope.$on.calls.mostRecent().args[0]).toBe("ChessboardUpdated");
     });
 
     it("should use ChessboardService to convert index to algebraic notation", function() {

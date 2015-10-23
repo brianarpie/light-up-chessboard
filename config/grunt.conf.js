@@ -62,6 +62,7 @@
     protractor: {
       options: {
         configFile: 'config/protractor.conf.js',
+        framework: 'jasmine2',
         keepAlive: true,
         noColor: false,
       },

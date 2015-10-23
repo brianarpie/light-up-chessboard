@@ -68,6 +68,7 @@
       run: {},
       saucelabs: {
         options: {
+          keepAlive: false, // fail the test in CI
           args: {
             "sauceUser": process.env.SAUCE_USERNAME,
             "sauceKey": process.env.SAUCE_ACCESS_KEY

@@ -41,7 +41,7 @@
           'app/*.less',
           'app/**/*.less'
         ],
-        tasks: ['less', 'jshint'],
+        tasks: ['less', 'jshint', 'karma:watch:run'],
         options: {
           spawn: false,
           livereload: true
@@ -51,12 +51,16 @@
     karma: {
       unit: {
         configFile: 'config/karma.conf.js'
+      },
+      watch: {
+        configFile: 'config/karma.conf.js',
+        background: true,
+        singleRun: false
       }
     },
     protractor: {
       options: {
         configFile: 'config/protractor.conf.js',
-        framework: 'jasmine2',
         keepAlive: true,
         noColor: false,
       },
@@ -82,8 +86,8 @@
   grunt.loadNpmTasks('grunt-protractor-runner');
 
   grunt.registerTask('lint', ['jshint']);
-  grunt.registerTask('serve', ['connect', 'watch', 'less']);
-  grunt.registerTask('test', ['karma', 'connect', 'protractor:run']);
-  grunt.registerTask('travis', ['karma', 'connect', 'protractor:saucelabs']);
+  grunt.registerTask('serve', ['connect', 'less', 'karma:watch:start', 'watch']);
+  grunt.registerTask('test', ['karma:unit:run', 'connect', 'protractor:run']);
+  grunt.registerTask('travis', ['karma:unit:run', 'connect', 'protractor:saucelabs']);
 
 };

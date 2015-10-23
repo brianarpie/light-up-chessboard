@@ -13,23 +13,18 @@
 <script src="app/app.js"></script>
 </head>
 <body>
+  
   <div ng-controller="MainCtrl as main">
     <div class="well">
       <h2 class="text-center">{{main.title}}</h2>
     </div>
     <chessboard></chessboard>
   </div>
-<!-- TODO: recreate this board -->
 
-<!-- <script src="app/controllers/pgnCtrl.js"></script>
-<script src="app/controllers/windowCtrl.js"></script>
-<script src="app/controllers/chessboardCtrl.js"></script>
-<script src="app/controllers/piecesCtrl.js"></script>
-<script src="app/controllers/gameCtrl.js"></script>
-<script src="app/services/pgnMoveService.js"></script> -->
 <script src="app/app-controller.js"></script>
 <script src="app/chessboard/chessboard.js"></script>
 <script src="app/chessboard/chessboard-directive.js"></script>
+<script src="app/chessboard/chessboard-service.js"></script>
 <script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>

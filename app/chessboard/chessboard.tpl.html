@@ -3,12 +3,11 @@
     <tbody>
       <div>
       <tr ng-repeat="row in chessboardCtrl.chessboard" class="board-row">
-        <td class="board-square"
+        <td class="board-square
+                  {{chessboardCtrl.getAlgebraicNotiation($parent.$index, $index)}}"
             ng-repeat="square in row"
             >
-          <!-- <img id="{{$index.toString().concat($parent.$index)}}"
-               ng-src="{{getImage($index, $parent.$index, this)}}"
-               > -->
+          <img ng-src="{{square.imageUrl}}">
         </td>
       </tr>
     </div>

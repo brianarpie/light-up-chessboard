@@ -14,6 +14,7 @@
       controller = $controller;
       ChessboardService = _ChessboardService_;
       spyOn(ChessboardService, "getBoard").and.callThrough();
+      spyOn(ChessboardService, "convertIndexNotation").and.callThrough();
 
       element = angular.element("<chessboard></chessboard>");
       compile(element)(scope);
@@ -30,6 +31,25 @@
 
     it('should have 64 squares', function() {
       expect(element.find('.board-square').length).toBe(64);
+    });
+
+    it("should provide class of each square with algebraic notation", function() {
+      // test top-left and bottom-right corners of the board
+      expect(element.find("td").first().hasClass("a8")).toBe(true);
+      expect(element.find("td").last().hasClass("h1")).toBe(true);
+    });
+
+    it("should update the local chessboard variable when receiving the message ChessboardService::ChessboardUpdated", function() {
+      
+    });
+
+    it("should use ChessboardService to convert index to algebraic notation", function() {
+      expect(ChessboardService.convertIndexNotation).toHaveBeenCalled();
+    });
+
+    it("should decorate each square with piece on chessboard", function() {
+      ChessboardService.addPiece("knight", "black", "e4");
+      expect(element.find(".e4 img").attr('src')).toMatch("knight-image-black");
     });
 
   });

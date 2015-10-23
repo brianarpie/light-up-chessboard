@@ -8,7 +8,6 @@
     var main = this;
 
     main.title = "Chess";
-
   });
 
 })();

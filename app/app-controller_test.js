@@ -2,9 +2,8 @@
 
   "use strict";
 
-  it('passes CI with flying colors', function() {
-    var everythingIsAwesome = true;
-    expect(everythingIsAwesome).toBe(true);
+  describe("app-controller unit tests", function() {
+
   });
 
 })();

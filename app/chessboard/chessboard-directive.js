@@ -7,14 +7,21 @@
   app.directive("chessboard", ["ChessboardService", function(ChessboardService) {
 
     function linker(scope, element, attrs) {
-
+      // ChessboardService.addPiece("king", "black", "e4");
     }
 
     return {
       restrict: "E",
       link: linker,
-      controller: function() {
-        this.chessboard = ChessboardService.getBoard();
+      controller: function($scope, $rootScope) {
+        var chessboardCtrl = this;
+        chessboardCtrl.chessboard = ChessboardService.getBoard();
+        chessboardCtrl.getAlgebraicNotiation = function(row, column) {
+          return ChessboardService.convertIndexNotation(row, column);
+        };
+        $rootScope.$on("ChessboardUpdated", function() {
+          $scope.$digest();
+        });
       },
       controllerAs: "chessboardCtrl",
       replace: false,

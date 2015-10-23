@@ -22,10 +22,11 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     // TODO: grunt task to scrape index.html for files to load
     files: [
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/underscore/underscore-min.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/jquery/dist/jquery.min.js',
       'app/app.js',
       'app/chessboard/chessboard.js',
       'app/components/components.js',

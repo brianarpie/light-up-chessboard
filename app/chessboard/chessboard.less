@@ -7,29 +7,31 @@
 @buttonHeight: 60px;
 @lightPurple: #4F4966;
 
-td.square {
-  width: @squareWidth;
-  height: @squareHeight;
-  padding: 1px;
-}
-table.board {
-  margin: 50px auto 100px auto;
-}
-.new-game {
-  width: @buttonWidth;
-  height: @buttonHeight;
-  text-align: center;
-  background: @salmon;
-  color: @lightPurple;
-  border: 3px solid @lightPurple;
-  border-radius: 5px;
-  margin: 25px 0;
-  display: block;
-  text-transform: uppercase;
-}
-img, i {
-  cursor: pointer;
-}
-.highlighted-box {
-  cursor: crosshair;
+.chessboard {
+  .board-square {
+    width: @squareWidth;
+    height: @squareHeight;
+    padding: 1px;
+  }
+  table {
+    margin: 50px auto 100px auto;
+  }
+  .new-game {
+    width: @buttonWidth;
+    height: @buttonHeight;
+    text-align: center;
+    background: @salmon;
+    color: @lightPurple;
+    border: 3px solid @lightPurple;
+    border-radius: 5px;
+    margin: 25px 0;
+    display: block;
+    text-transform: uppercase;
+  }
+  img, i {
+    cursor: pointer;
+  }
+  .highlighted-box {
+    cursor: crosshair;
+  }
 }

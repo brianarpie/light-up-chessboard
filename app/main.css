@@ -1,12 +1,12 @@
-td.square {
+.chessboard .board-square {
   width: 62px;
   height: 64px;
   padding: 1px;
 }
-table.board {
+.chessboard table {
   margin: 50px auto 100px auto;
 }
-.new-game {
+.chessboard .new-game {
   width: 180px;
   height: 60px;
   text-align: center;
@@ -18,11 +18,11 @@ table.board {
   display: block;
   text-transform: uppercase;
 }
-img,
-i {
+.chessboard img,
+.chessboard i {
   cursor: pointer;
 }
-.highlighted-box {
+.chessboard .highlighted-box {
   cursor: crosshair;
 }
 * {

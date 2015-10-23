@@ -14,33 +14,13 @@
 </head>
 <body>
   <div ng-controller="MainCtrl as main">
-    <h2>{{main.title}}</h2>
+    <div class="well">
+      <h2 class="text-center">{{main.title}}</h2>
+    </div>
+    <chessboard></chessboard>
   </div>
 <!-- TODO: recreate this board -->
-<table class="board">
-  <tbody>
-    <tr ng-repeat="row in board">
 
-      <td class="square highlighted-box"
-          ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
-          ng-repeat="square in row"
-          ng-model="selected"
-          ng-class="{'highlighted-box':selected}"
-          ng-drop="true"
-          ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"
-          >
-
-        <img id="{{$index.toString().concat($parent.$index)}}"
-             ng-src="{{getImage($index, $parent.$index, this)}}"
-             ng-drag="true"
-             ng-drag-data="board[$index][$parent.$index].piece"
-             ng-drag-success="onDrag($data, $event)"
-
-             >
-      </td>
-    </tr>
-  </tbody>
-</table>
 <!-- <script src="app/controllers/pgnCtrl.js"></script>
 <script src="app/controllers/windowCtrl.js"></script>
 <script src="app/controllers/chessboardCtrl.js"></script>
@@ -48,6 +28,34 @@
 <script src="app/controllers/gameCtrl.js"></script>
 <script src="app/services/pgnMoveService.js"></script> -->
 <script src="app/app-controller.js"></script>
+<script src="app/chessboard/chessboard.js"></script>
+<script src="app/chessboard/chessboard-directive.js"></script>
 <script src="//localhost:35729/livereload.js"></script>
 </body>
 </html>
+
+<!-- <div class="chessboard">
+  <table>
+    <tbody>
+      <tr ng-repeat="row in board.rows" class="board-row">
+        <td class="square highlighted-box"
+            ng-style="{'background': getBackgroundColor($index, $parent.$index)}"
+            ng-repeat="square in row"
+            ng-model="selected"
+            ng-class="{'highlighted-box':selected}"
+            ng-drop="true"
+            ng-drop-success="onDropComplete($data, $event, $index, $parent.$index)"
+            >
+          <img id="{{$index.toString().concat($parent.$index)}}"
+               ng-src="{{getImage($index, $parent.$index, this)}}"
+               ng-drag="true"
+               ng-drag-data="board[$index][$parent.$index].piece"
+               ng-drag-success="onDrag($data, $event)"
+
+               >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+-->

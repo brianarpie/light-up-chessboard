@@ -2,10 +2,10 @@
 
   "use strict";
 
-  angular.module('chess', ['ngRoute']);
+  angular.module('chessApp', ['ngRoute', 'chessboard']);
 
   angular.element(document).ready(function() {
-    angular.bootstrap(document, ['chess']);
+    angular.bootstrap(document, ['chessApp']);
   });
 
 })();

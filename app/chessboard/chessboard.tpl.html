@@ -1,0 +1,17 @@
+<div class="chessboard">
+  <table>
+    <tbody>
+      <div>
+      <tr ng-repeat="row in board.squares" class="board-row">
+        <td class="board-square"
+            ng-repeat="square in row"
+            >
+          <!-- <img id="{{$index.toString().concat($parent.$index)}}"
+               ng-src="{{getImage($index, $parent.$index, this)}}"
+               > -->
+        </td>
+      </tr>
+    </div>
+    </tbody>
+  </table>
+</div>

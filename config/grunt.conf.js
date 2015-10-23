@@ -39,7 +39,8 @@
           'index.html',
           '<%= jshint.files %>',
           'app/*.less',
-          'app/**/*.less'
+          'app/**/*.less',
+          'app/**/*.html'
         ],
         tasks: ['less', 'jshint', 'karma:watch:run'],
         options: {

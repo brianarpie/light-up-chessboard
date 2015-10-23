@@ -20,12 +20,19 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
+    // TODO: grunt task to scrape index.html for files to load
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'app/app.js',
+      'app/chessboard/chessboard.js',
+      'app/components/components.js',
+      'app/heat-map-engine/heat-map-engine.js',
+      'app/legal-moves/legal-moves.js',
       'app/*.js',
+      'app/*[^_]*.js',
+      'app/**/*[^_]*.js',
       'app/**/*.js',
       'app/**/*.html'
     ],
@@ -39,7 +46,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'app/**/*directive.html': ['ng-html2js']
+      'app/**/*.tpl.html': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {
@@ -48,7 +55,7 @@ module.exports = function(config) {
         return "/assets" + filepath.split('/javascripts').pop();
       },
       */
-      moduleName: 'TemplateCache' // TODO: replace this with environment variable ?
+      moduleName: 'templates' // TODO: replace this with environment variable ?
     },
 
 

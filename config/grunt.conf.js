@@ -62,7 +62,6 @@
     protractor: {
       options: {
         configFile: 'config/protractor.conf.js',
-        framework: 'jasmine2',
         keepAlive: true,
         noColor: false,
       },
@@ -71,9 +70,7 @@
         options: {
           args: {
             "sauceUser": process.env.SAUCE_USERNAME,
-            "sauceKey": process.env.SAUCE_ACCESS_KEY,
-            "build": process.env.TRAVIS_BUILD_NUMBER,
-            "tunnel-identifier": process.env.TRAVIS_JOB_NUMBER
+            "sauceKey": process.env.SAUCE_ACCESS_KEY
           },
         }
       }

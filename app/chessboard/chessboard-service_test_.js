@@ -93,5 +93,12 @@
       expect(h1).toBe("h1");
     });
 
+    it("should provide a function to get information of a square", function() {
+      ChessboardService.addPiece("queen", "black", "e8");
+      var square = ChessboardService.getSquare("e8");
+      expect(square.piece).toBe("queen");
+      expect(square.color).toBe("black");
+    });
+
   });
 })();

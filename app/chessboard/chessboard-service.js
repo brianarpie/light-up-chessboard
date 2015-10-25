@@ -70,6 +70,7 @@
       getBoard: function() {
         return chessboard;
       },
+      getSquare: getTargetSquare,
       addPiece: addPiece,
       removePiece: removePiece,
       convertAlgebraicNotation: convertAlgebraicNotation,

@@ -13,12 +13,14 @@
 <script src="app/app.js"></script>
 </head>
 <body>
-  
+
   <div ng-controller="MainCtrl as main">
     <div class="well">
       <h2 class="text-center">{{main.title}}</h2>
     </div>
-    <chessboard></chessboard>
+    <chessboard
+      ng-controller="ChessboardCtrl as board">
+    </chessboard>
   </div>
 
 <script src="app/app-controller.js"></script>

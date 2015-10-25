@@ -34,15 +34,13 @@
       publishChanges('ChessboardUpdated', chessboard);
     }
 
-    function publishChanges(event, data) {
-      $rootScope.publish(event, data);
-    }
-
     function removePiece(square) {
       var targetSquare = getTargetSquare(square);
       targetSquare.piece = null;
       targetSquare.color = null;
       targetSquare.imageUrl = null;
+
+      publishChanges('ChessboardUpdated', chessboard);
     }
 
     // TODO: find way to not make this so brittle
@@ -60,6 +58,10 @@
       var number =  Math.abs(row - 8);
 
       return letter + number;
+    }
+
+    function publishChanges(event, data) {
+      $rootScope.publish(event, data);
     }
 
     init();

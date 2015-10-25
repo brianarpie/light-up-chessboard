@@ -10,7 +10,7 @@
       ChessboardService = _ChessboardService_;
       rootScope = $rootScope;
 
-      spyOn(rootScope, '$broadcast').and.callThrough();
+      spyOn(rootScope, '$emit').and.callThrough();
     }));
 
     it("should create the chessboard on init", function() {
@@ -66,18 +66,18 @@
       expect(targetSquare.imageUrl).toMatch("knight-image-white");
     });
 
-    xit("should broadcast changes made to chessboard", function() {
+    it("should call $rootScope.$emit once when adding a piece", function() {
       ChessboardService.addPiece("rook", "white", "d2");
-
-      var updatedBoard = ChessboardService.getBoard();
-      expect(rootScope.$broadcast).toHaveBeenCalledWith('ChessboardService::ChessboardUpdated', updatedBoard);
+      expect(rootScope.$emit.calls.count()).toEqual(1);
     });
 
-    it("should have a way to publish changes to the chessboard", function() {
-
+    it("should call $rootScope.$emit twice when adding and removing a piece", function() {
+      ChessboardService.addPiece("rook", "white", "d2");
+      ChessboardService.removePiece("d2");
+      expect(rootScope.$emit.calls.count()).toEqual(2);
     });
 
-    it("should map algebraic notation to an index on the chessboard", function() {
+    it("should provide a function to convert algebraic notation to an index on the chessboard", function() {
       // test top-left and bottom-right corner squares
       var a8 = ChessboardService.convertAlgebraicNotation("a8");
       expect(a8).toEqual([0,0]);
@@ -85,7 +85,7 @@
       expect(h1).toEqual([7,7]);
     });
 
-    it("should map an index on the chessboard to algebraic notation", function() {
+    it("should provide a function to convert an index on the chessboard to algebraic notation", function() {
       // test top-left and bottom-right corner squares
       var a8 = ChessboardService.convertIndexNotation(0, 0);
       expect(a8).toBe("a8");

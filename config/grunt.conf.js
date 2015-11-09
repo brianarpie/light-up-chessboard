@@ -51,6 +51,10 @@
     },
     karma: {
       unit: {
+        browsers: ['PhantomJS'],
+        configFile: 'config/karma.conf.js'
+      },
+      chrome: {
         browsers: ['Chrome'],
         configFile: 'config/karma.conf.js'
       },
@@ -88,7 +92,7 @@
 
   grunt.registerTask('lint', ['jshint']);
   grunt.registerTask('serve', ['connect', 'less', 'karma:watch:start', 'watch']);
-  grunt.registerTask('test', ['karma:unit:run', 'connect', 'protractor:run']);
+  grunt.registerTask('test', ['karma:chrome:start', 'connect', 'protractor:run']);
   grunt.registerTask('travis', ['karma:unit', 'connect', 'protractor:saucelabs']);
 
 };

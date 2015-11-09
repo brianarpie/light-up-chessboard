@@ -15,22 +15,21 @@
     "grunt-protractor-runner": "^2.1.0",
     "jasmine-core": "2.2.0",
     "karma": "^0.13.11",
+    "karma-chrome-launcher": "^0.2.1",
     "karma-jasmine": "0.3.5",
     "karma-ng-html2js-preprocessor": "^0.2.0",
     "karma-phantomjs-launcher": "0.1.4",
     "karma-requirejs": "0.2.2",
     "karma-spec-reporter": "0.0.20",
     "phantomjs": "1.9.12",
-    "protractor": "^2.5.1",
-    "requirejs": "2.1.16"
+    "protractor": "^2.5.1"
   },
   "name": "la-luz-de-ajedrez",
   "description": "[![Build Status](https://magnum.travis-ci.com/buwuwei/la-luz-de-ajedrez.svg?token=AKiSa35xbqQMse2vmyjZ&branch=master)](https://magnum.travis-ci.com/buwuwei/la-luz-de-ajedrez)",
   "version": "0.0.1",
-  "main": "karma.conf.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/buwuwei/la-luz-de-ajedrez.git"
+    "url": "https://github.com/buwuwei/light-up-chessboard.git"
   },
   "author": "Brian David Arpie",
   "license": "MIT",

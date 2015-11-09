@@ -51,6 +51,7 @@
     },
     karma: {
       unit: {
+        browsers: ['Chrome'],
         configFile: 'config/karma.conf.js'
       },
       watch: {
